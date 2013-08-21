@@ -1,3 +1,4 @@
+
 package com.lewa.droidtest.statusbar;
 
 import android.app.Fragment;
@@ -17,7 +18,7 @@ import com.android.internal.statusbar.IStatusBarService;
 
 import com.lewa.droidtest.Utils;
 
-public class ShowStatusbarFragment extends Fragment{
+public class ShowStatusbarFragment extends Fragment {
     private BroadcastReceiver mRecentTaskReceiver = new BroadcastReceiver() {
 
         @Override
@@ -29,37 +30,41 @@ public class ShowStatusbarFragment extends Fragment{
             }
             try {
                 mStatusBarService.toggleRecentApps();
-            } catch (RemoteException e) {
+            }
+            catch (RemoteException e) {
             }
         }
-        
     };
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        LinearLayout layout  = new LinearLayout(getActivity());
-        LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        LinearLayout layout = new LinearLayout(getActivity());
+        LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT,
+                LayoutParams.MATCH_PARENT);
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setLayoutParams(layoutParams);
         Utils.addButton(this, layout, "register", "register");
         Utils.addButton(this, layout, "unregister", "unregister");
         return layout;
     }
-    
+
     public void register() {
-        getActivity().registerReceiver(mRecentTaskReceiver, new IntentFilter("ShowStatusbarFragment.ACTION"));
+        getActivity().registerReceiver(mRecentTaskReceiver,
+                new IntentFilter("ShowStatusbarFragment.ACTION"));
     }
-    
+
     public void unregister() {
         getActivity().unregisterReceiver(mRecentTaskReceiver);
     }
+
     @Override
     public void onDestroy() {
         unregister();
         super.onDestroy();
     }
-    
-    
+
 }

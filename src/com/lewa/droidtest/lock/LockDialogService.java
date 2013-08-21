@@ -1,3 +1,4 @@
+
 package com.lewa.droidtest.lock;
 
 import android.app.Service;
@@ -10,16 +11,16 @@ import android.view.WindowManagerImpl;
 import android.view.WindowManager.LayoutParams;
 import android.widget.RelativeLayout;
 
-public class LockDialogService extends Service{
+public class LockDialogService extends Service {
     private String TAG = "LockDialogService";
-    
+
     private void addDialogView() {
         final RelativeLayout layout = new RelativeLayout(this);
-        layout.setOnClickListener(new View.OnClickListener(){
+        layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 layout.setBackgroundColor(Color.GRAY);
-            }          
+            }
         });
 
         layout.setBackgroundColor(Color.RED);
@@ -28,12 +29,12 @@ public class LockDialogService extends Service{
         params.width = 200;
         params.height = 400;
         params.type = LayoutParams.TYPE_SYSTEM_DIALOG;
-        WindowManagerImpl.getDefault().addView(layout, params);
+        // WindowManagerImpl.getDefault().addView(layout, params);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.e(TAG , "starting..");
+        Log.e(TAG, "starting..");
         addDialogView();
         return super.onStartCommand(intent, flags, startId);
     }

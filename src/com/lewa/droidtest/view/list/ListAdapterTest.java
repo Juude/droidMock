@@ -1,3 +1,4 @@
+
 package com.lewa.droidtest.view.list;
 
 import android.app.Activity;
@@ -17,13 +18,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.google.android.collect.Lists;
 import java.util.List;
+
 /**
- * TODO:
- * 1.setEmptyView
- * 2.ViewHolder
- * 3.ViewHolder compare
- * 4.
- * */
+ * TODO: 1.setEmptyView 2.ViewHolder 3.ViewHolder compare 4.
+ */
 
 public class ListAdapterTest extends Fragment {
     private Activity mActivity;
@@ -32,6 +30,7 @@ public class ListAdapterTest extends Fragment {
     private static final int MENU_CLEAR = 1;
     private static final int MENU_ADD = 2;
     private List<String> mList = Lists.newArrayList();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         mActivity = getActivity();
@@ -40,7 +39,7 @@ public class ListAdapterTest extends Fragment {
         super.onCreate(savedInstanceState);
         setList();
     }
-    
+
     private View createEmptyView() {
         View v = new View(mActivity);
         v.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
@@ -48,13 +47,13 @@ public class ListAdapterTest extends Fragment {
         v.setId(android.R.id.empty);
         return v;
     }
-    
+
     private void setList() {
         mList.add("f1");
         mList.add("f2");
         mList.add("f3");
     }
-    
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.add(Menu.NONE, MENU_CLEAR, Menu.NONE, "clear logs");
@@ -63,7 +62,7 @@ public class ListAdapterTest extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId())
+        switch (item.getItemId())
         {
             case MENU_CLEAR:
                 mList.clear();
@@ -77,16 +76,17 @@ public class ListAdapterTest extends Fragment {
                 return super.onOptionsItemSelected(item);
         }
     }
-    
+
     @Override
     public void onDestroy() {
         super.onDestroy();
     }
-    
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         FrameLayout layout = new FrameLayout(mActivity);
-        layout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+        layout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
+                LayoutParams.MATCH_PARENT));
         ListView listView = new ListView(mActivity);
         listView.setAdapter(mLogsAdapter);
         View emptyView = createEmptyView();
@@ -95,27 +95,27 @@ public class ListAdapterTest extends Fragment {
         layout.addView(emptyView);
         return layout;
     }
-    
-    private class TestAdapter extends BaseAdapter{
+
+    private class TestAdapter extends BaseAdapter {
         public TestAdapter() {
 
         }
-        
+
         @Override
         public int getCount() {
             return mList.size();
         }
-    
+
         @Override
         public Object getItem(int position) {
             return mList.get(position);
         }
-    
+
         @Override
         public long getItemId(int position) {
             return position;
         }
-        
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             TextView v = new TextView(mActivity);
@@ -125,4 +125,3 @@ public class ListAdapterTest extends Fragment {
     }
 
 }
-

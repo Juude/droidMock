@@ -1,4 +1,6 @@
+
 package com.lewa.droidtest.lock;
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -24,10 +26,10 @@ import com.lewa.droidtest.Utils;
 
 import java.lang.reflect.Method;
 
-
 public class LockActivity extends Activity {
     private View mLockView = null;
     private WindowManager mWindowManager = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,18 +47,12 @@ public class LockActivity extends Activity {
         super.onDetachedFromWindow();
         removeLockView();
     }
-    
+
     @Override
     protected void onStop() {
-        Utils.logE(this, "stop");
-        if (mLockView != null)
-        {
-            Utils.hideKeyboard(this, mLockView);
-        }
-
         super.onStop();
     }
-    
+
     @Override
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -70,9 +66,9 @@ public class LockActivity extends Activity {
         params.width = LayoutParams.MATCH_PARENT;
         params.height = LayoutParams.MATCH_PARENT;
         params.type = LayoutParams.TYPE_KEYGUARD_DIALOG;
-        params.flags = 
+        params.flags =
                 LayoutParams.FLAG_FORCE_NOT_FULLSCREEN |
-                LayoutParams.FLAG_TOUCHABLE_WHEN_WAKING;
+                        LayoutParams.FLAG_TOUCHABLE_WHEN_WAKING;
         addView(mLockView, params);
     }
 
@@ -81,13 +77,12 @@ public class LockActivity extends Activity {
         removeView(mLockView);
     }
 
-
     @Override
     protected void onPause() {
         Utils.logE(this, "pause");
         super.onPause();
     }
-    
+
     public class LockView extends LinearLayout {
         private static final String TAG = "LockView";
         private Activity mParent = null;
@@ -99,7 +94,6 @@ public class LockActivity extends Activity {
 
         private static final int TIME_DELAY = 15000;
 
-
         public LockView(Activity context) {
             super(context);
             mParent = context;
@@ -108,37 +102,37 @@ public class LockActivity extends Activity {
             inflater.inflate(R.layout.lock_view, this);
             mPowerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
             mWakeLock = mPowerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK |
-                    PowerManager.ON_AFTER_RELEASE , "KEYGUARD");
-            
-            
-            Button buttonOk = (Button)findViewById(R.id.buttonOk);
+                    PowerManager.ON_AFTER_RELEASE, "KEYGUARD");
+
+            Button buttonOk = (Button) findViewById(R.id.buttonOk);
             buttonOk.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     mParent.finish();
                 }
             });
-            
 
-            
             mPasswordEdit = ((EditText) findViewById(R.id.editPassword));
-            mPasswordEdit.setFilters(new InputFilter[]{ new InputFilter(){
+            mPasswordEdit.setFilters(new InputFilter[] {
+                new InputFilter() {
 
-                @Override
-                public CharSequence filter(CharSequence source, int start, int end, Spanned dest,
-                        int dstart, int dend) {
-                    requireWake();
-                    return null;
+                    @Override
+                    public CharSequence filter(CharSequence source, int start, int end,
+                            Spanned dest,
+                            int dstart, int dend) {
+                        requireWake();
+                        return null;
+                    }
+
                 }
-                
-            }});
-            
-            
-            Button buttonKeyboard = (Button)findViewById(R.id.buttonShowKeyboard);
+            });
+
+            Button buttonKeyboard = (Button) findViewById(R.id.buttonShowKeyboard);
             buttonKeyboard.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    InputMethodManager imm = (InputMethodManager)mParent.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    InputMethodManager imm = (InputMethodManager) mParent
+                            .getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.setFullscreenMode(true);
                     imm.showSoftInput(mPasswordEdit, 0);
                 }
@@ -171,20 +165,17 @@ public class LockActivity extends Activity {
             mWakeLock.release();
         }
 
-      
         @Override
         protected void onLayout(boolean changed, int l, int t, int r, int b) {
             super.onLayout(changed, l, t, r, b);
         }
-        
-        
+
         @Override
         protected void onFinishInflate() {
             super.onFinishInflate();
             requireWake();
         }
 
-        
         @Override
         public boolean onTouchEvent(MotionEvent event) {
             requireWake();
@@ -198,14 +189,12 @@ public class LockActivity extends Activity {
 
         @Override
         protected void onDetachedFromWindow() {
-            Utils.logE(this, "mParent..hide.");
-            Utils.hideKeyboard(mParent, mPasswordEdit);
             super.onDetachedFromWindow();
         }
     }
-    
+
     @SuppressWarnings({
-        "rawtypes", "unchecked"
+            "rawtypes", "unchecked"
     })
     private void addView(View mLockView, LayoutParams params) {
         try {
@@ -213,16 +202,17 @@ public class LockActivity extends Activity {
             cls = Class.forName("android.view.WindowManagerImpl");
             Method methodGetDefault = cls.getMethod("getDefault");
             Object obj = methodGetDefault.invoke(cls);
-            Method methodAddView = cls.getMethod("addView", View.class, ViewGroup.LayoutParams.class);
+            Method methodAddView = cls.getMethod("addView", View.class,
+                    ViewGroup.LayoutParams.class);
             methodAddView.invoke(obj, mLockView, params);
         }
         catch (Exception e) {
             mWindowManager.addView(mLockView, params);
         }
     }
-    
+
     @SuppressWarnings({
-        "rawtypes", "unchecked"
+            "rawtypes", "unchecked"
     })
     private void removeView(View mLockView) {
         try {
@@ -238,5 +228,4 @@ public class LockActivity extends Activity {
         }
     }
 
-    
 }

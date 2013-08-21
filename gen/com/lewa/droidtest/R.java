@@ -19,12 +19,14 @@ public final class R {
     public static final class drawable {
         public static final int bg_blue=0x7f020000;
         public static final int ic_launcher=0x7f020001;
+        public static final int image=0x7f020002;
+        public static final int scan_line=0x7f020003;
     }
     public static final class id {
         public static final int add_journalentry_menuitem=0x7f090017;
         public static final int button1=0x7f090007;
-        public static final int button4=0x7f09002b;
-        public static final int button5=0x7f09002d;
+        public static final int button4=0x7f09002e;
+        public static final int button5=0x7f090030;
         public static final int buttonGreen=0x7f090003;
         public static final int buttonOk=0x7f090015;
         public static final int buttonRed=0x7f090001;
@@ -42,6 +44,9 @@ public final class R {
         public static final int editTo=0x7f090023;
         public static final int fragment=0x7f090005;
         public static final int header_text=0x7f09000d;
+        public static final int imageView1=0x7f090026;
+        public static final int imageView2=0x7f090027;
+        public static final int imageView3=0x7f090028;
         public static final int list_complex_caption=0x7f09000b;
         public static final int list_complex_title=0x7f09000a;
         public static final int list_header_title=0x7f09000c;
@@ -52,7 +57,7 @@ public final class R {
         public static final int memclearout=0x7f090019;
         public static final int memoryCleaner=0x7f090000;
         public static final int memoryinfo=0x7f09001b;
-        public static final int menu_settings=0x7f09002e;
+        public static final int menu_settings=0x7f090031;
         public static final int passwordHintDown=0x7f090013;
         public static final int pieChart=0x7f09001e;
         public static final int pinned_header_list_layout=0x7f09001f;
@@ -60,14 +65,14 @@ public final class R {
         public static final int surface=0x7f09000e;
         public static final int takePhoto=0x7f09001d;
         public static final int textTitle=0x7f090010;
-        public static final int textToogleAdb=0x7f090027;
-        public static final int textToogleDown=0x7f090029;
+        public static final int textToogleAdb=0x7f09002b;
+        public static final int textToogleDown=0x7f09002d;
         public static final int textView1=0x7f090008;
         public static final int textView2=0x7f090009;
-        public static final int textView3=0x7f09002a;
-        public static final int textView4=0x7f09002c;
-        public static final int toogleAdb=0x7f090026;
-        public static final int toogleDown=0x7f090028;
+        public static final int textView3=0x7f090029;
+        public static final int textView4=0x7f09002f;
+        public static final int toogleAdb=0x7f09002a;
+        public static final int toogleDown=0x7f09002c;
     }
     public static final class layout {
         public static final int activity_fullscreen=0x7f030000;
@@ -89,9 +94,11 @@ public final class R {
         public static final int pinned_header_list_demo=0x7f030010;
         public static final int scroll_add=0x7f030011;
         public static final int sms_sender_activity=0x7f030012;
-        public static final int text_test=0x7f030013;
-        public static final int turn_off_adb_activity=0x7f030014;
-        public static final int weight=0x7f030015;
+        public static final int test_image_view=0x7f030013;
+        public static final int test_text_compound=0x7f030014;
+        public static final int text_test=0x7f030015;
+        public static final int turn_off_adb_activity=0x7f030016;
+        public static final int weight=0x7f030017;
     }
     public static final class menu {
         public static final int activity_main=0x7f080000;

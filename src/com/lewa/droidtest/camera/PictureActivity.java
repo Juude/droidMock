@@ -1,3 +1,4 @@
+
 package com.lewa.droidtest.camera;
 
 import android.app.Activity;
@@ -7,7 +8,6 @@ import android.view.SurfaceView;
 import android.view.View;
 
 import com.lewa.droidtest.R;
-
 
 public class PictureActivity extends Activity {
     private SurfaceHolder mSurfaceHolder = null;
@@ -23,12 +23,12 @@ public class PictureActivity extends Activity {
         mPictureUtils = new PictureUtils(mSurfaceHolder);
         super.onCreate(savedInstanceState);
     }
-    
+
     public void takePhoto(View v)
     {
         mPictureUtils.takePicture();
     }
-    
+
     @Override
     public void onBackPressed() {
         mPictureUtils.takePicture();

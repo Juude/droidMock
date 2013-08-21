@@ -1,3 +1,4 @@
+
 package com.lewa.droidtest.view.linkedbutton;
 
 import android.app.Fragment;
@@ -15,8 +16,8 @@ import android.widget.TextView;
 
 import com.lewa.droidtest.R;
 
-public class LinkedButtonFragment extends Fragment{
-    
+public class LinkedButtonFragment extends Fragment {
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -27,63 +28,69 @@ public class LinkedButtonFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.linked_button_activity, null);
         final Button button1 = (Button) v.findViewById(R.id.button1);
-        
+
         button1.setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                switch(event.getAction()) {
+                switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         button1.setTextColor(getResources().getColor(android.R.color.white));
                         break;
                     case MotionEvent.ACTION_UP:
-                        button1.setTextColor(getResources().getColor(android.R.color.holo_blue_light));
+                        button1.setTextColor(getResources().getColor(
+                                android.R.color.holo_blue_light));
                         break;
                 }
                 return false;
             }
-            
+
         });
-        
-        final TextView textView =  (TextView) v.findViewById(R.id.textView1);
+
+        final TextView textView = (TextView) v.findViewById(R.id.textView1);
         textView.setTextSize(50);
         textView.setOnTouchListener(new OnTouchListener() {
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                switch(event.getAction()) {
+                switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         System.out.println("action down...");
-                        
-                        SpannableStringBuilder style=new SpannableStringBuilder(textView.getText());
-                        style.setSpan(new BackgroundColorSpan(getResources().getColor(android.R.color.holo_blue_light)), 
-                                                0,
-                                                textView.length(),
-                                                Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+
+                        SpannableStringBuilder style = new SpannableStringBuilder(textView
+                                .getText());
+                        style.setSpan(
+                                new BackgroundColorSpan(getResources().getColor(
+                                        android.R.color.holo_blue_light)),
+                                0,
+                                textView.length(),
+                                Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
                         textView.setText(style);
                         textView.setTextColor(getResources().getColor(android.R.color.white));
-                        
+
                         break;
                     case MotionEvent.ACTION_UP:
                         System.out.println("action up...");
-                        SpannableStringBuilder stylex=new SpannableStringBuilder(textView.getText());
-                        stylex.setSpan(new BackgroundColorSpan(getResources().getColor(android.R.color.transparent)), 
-                                                0,
-                                                textView.length(),
-                                                Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
-                        textView.setTextColor(getResources().getColor(android.R.color.holo_blue_light));                   
+                        SpannableStringBuilder stylex = new SpannableStringBuilder(textView
+                                .getText());
+                        stylex.setSpan(
+                                new BackgroundColorSpan(getResources().getColor(
+                                        android.R.color.transparent)),
+                                0,
+                                textView.length(),
+                                Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+                        textView.setTextColor(getResources().getColor(
+                                android.R.color.holo_blue_light));
                         textView.setText(stylex);
                         break;
                     default:
                         System.out.println("action :" + event.getAction());
                 }
-                
+
                 return true;
             }
-            
+
         });
         return v;
     }
-    
-    
-    
+
 }

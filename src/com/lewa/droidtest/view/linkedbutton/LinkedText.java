@@ -1,3 +1,4 @@
+
 package com.lewa.droidtest.view.linkedbutton;
 
 import android.content.Context;
@@ -18,45 +19,49 @@ public class LinkedText extends TextView {
     public LinkedText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
-    
+
     public LinkedText(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
-    
+
     public LinkedText(Context context) {
         this(context, null, 0);
     }
-    
+
     private SpannableStringBuilder getStringBuilder(int type)
     {
         CharSequence text = getText();
         System.out.println("text = " + text);
-        if(type == BACKGROUND_BUILDER) {
-            if(mBackgrounBuilder == null) {
-                mBackgrounBuilder=new SpannableStringBuilder(text);
-                mBackgrounBuilder.setSpan(new BackgroundColorSpan(getResources().getColor(android.R.color.holo_blue_light)), 
-                                        0,
-                                        text.length(),
-                                        Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+        if (type == BACKGROUND_BUILDER) {
+            if (mBackgrounBuilder == null) {
+                mBackgrounBuilder = new SpannableStringBuilder(text);
+                mBackgrounBuilder.setSpan(
+                        new BackgroundColorSpan(getResources().getColor(
+                                android.R.color.holo_blue_light)),
+                        0,
+                        text.length(),
+                        Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
             }
             return mBackgrounBuilder;
         }
         else {
-            if(mNormalBuilder == null) {
-                mNormalBuilder=new SpannableStringBuilder(text);
-                mNormalBuilder.setSpan(new BackgroundColorSpan(getResources().getColor(android.R.color.transparent)), 
-                                        0,
-                                        text.length(),
-                                        Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+            if (mNormalBuilder == null) {
+                mNormalBuilder = new SpannableStringBuilder(text);
+                mNormalBuilder.setSpan(
+                        new BackgroundColorSpan(getResources()
+                                .getColor(android.R.color.transparent)),
+                        0,
+                        text.length(),
+                        Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
             }
             return mNormalBuilder;
 
         }
-    }   
-    
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        switch(event.getAction()) {
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 System.out.println("action down....");
                 setText(getStringBuilder(BACKGROUND_BUILDER));
@@ -65,10 +70,10 @@ public class LinkedText extends TextView {
             case MotionEvent.ACTION_UP:
                 System.out.println("action up....");
                 setText(getStringBuilder(NORMAL_BUILDER));
-                setTextColor(getResources().getColor(android.R.color.holo_blue_light));                   
+                setTextColor(getResources().getColor(android.R.color.holo_blue_light));
                 break;
         }
         return true;
     }
-    
+
 }

@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
-import android.os.AsyncTask;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
@@ -51,17 +50,17 @@ public class MmsSenderService extends Service {
     public static String mProxy = "10.0.0.172";
     public static int mPort = 80;
 
-    //private IntentFilter mFilter = new IntentFilter();
+    // private IntentFilter mFilter = new IntentFilter();
     private MmsInfo mMmsInfo;
 
     private final int MESSAGE_START_APN = 1000;
     private final int MESSAGE_SEND_MMS = 2000;
-    
+
     private ConnectivityManager mConnectivityManager = null;
-    
+
     private String mTempPath = Environment.getExternalStorageDirectory()
-    .getPath() + File.separator + "0000.jpg";
-    
+            .getPath() + File.separator + "0000.jpg";
+
     private Handler mHandler = new Handler()
     {
         @Override
@@ -71,33 +70,33 @@ public class MmsSenderService extends Service {
             {
                 case MESSAGE_START_APN:
                     Log.e(TAG, "MESSAGE_START_APN");
-                    if (!isMmsApn()){
-                        
+                    if (!isMmsApn()) {
+
                         startApn();
                     }
-                    
+
                     break;
 
                 case MESSAGE_SEND_MMS:
                     Log.e(TAG, "MESSAGE_SEND_MMS");
                     if (mMmsInfo != null)
                         Log.e(TAG, "mms tasking");
-                        new Thread(new MmsSenderThread()).start();
+                    new Thread(new MmsSenderThread()).start();
                     break;
             }
         }
     };
 
-    private void initApn(){
-        
+    private void initApn() {
+
         ApnHelper helper = new ApnHelper(this);
         List<ApnHelper.APN> apns = helper.getMMSApns();
-        if (apns != null && apns.size() > 0){
+        if (apns != null && apns.size() > 0) {
             final String url = apns.get(0).MMSCenterUrl;
-            if(url != null){
+            if (url != null) {
                 mUrl = apns.get(0).MMSCenterUrl;
             }
-            else{
+            else {
                 Log.e(TAG, "url is null");
             }
         }
@@ -115,7 +114,6 @@ public class MmsSenderService extends Service {
             mHandler.sendEmptyMessage(MESSAGE_SEND_MMS);
         }
     }
-
 
     private boolean isMmsApn()
     {
@@ -146,7 +144,7 @@ public class MmsSenderService extends Service {
 
         int result = mConnectivityManager.startUsingNetworkFeature(ConnectivityManager.TYPE_MOBILE,
                 Phone.FEATURE_ENABLE_MMS);
-        
+
         if (result != 0)
         {
 
@@ -162,27 +160,15 @@ public class MmsSenderService extends Service {
         }
     }
 
-    private class MmsSenderTask extends AsyncTask<Void, String, String>{
-        @Override
-        protected String doInBackground(Void... params) {
-            /*
-             * TODO:use this
-             * */
-            send();
-            return null;
-        }
-        
-    }
-    
     private class MmsSenderThread implements Runnable {
 
         @Override
         public void run() {
             send();
         }
-        
+
     }
-    
+
     private byte[] send() {
         byte[] pduBody = mMmsInfo.getMMSBytes();
         HttpClient client = null;
@@ -193,7 +179,6 @@ public class MmsSenderService extends Service {
             HttpParams httpParams = new BasicHttpParams();
             httpParams.setParameter(ConnRouteParams.DEFAULT_PROXY, httpHost);
             HttpConnectionParams.setConnectionTimeout(httpParams, 120000);
-            HttpConnectionParams.setSoSndTimeout(httpParams, 120000);
             HttpConnectionParams.setSoTimeout(httpParams, 120000);
             client = new DefaultHttpClient(httpParams);
 
@@ -269,19 +254,19 @@ public class MmsSenderService extends Service {
             {
                 mHandler.sendEmptyMessageDelayed(MESSAGE_SEND_MMS, 10 * 60 * 1000);
             }
-            //unregisterNetworkReceiver();
+            // unregisterNetworkReceiver();
         }
         return new byte[0];
     }
-    
-     @Override
+
+    @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if(intent == null)
+        if (intent == null)
         {
             return super.onStartCommand(intent, flags, startId);
         }
         File f = new File(mTempPath);
-        
+
         final String destination = "18721723484";
         Preconditions.checkNotNull(destination, "cannot be nulll");
         mMmsInfo = new MmsInfo(this, destination, "test message");
@@ -297,10 +282,10 @@ public class MmsSenderService extends Service {
         Log.e(TAG, "onDestroying...");
         mHandler.removeMessages(MESSAGE_SEND_MMS);
         mHandler.removeMessages(MESSAGE_START_APN);
-        //unregisterNetworkReceiver();
+        // unregisterNetworkReceiver();
         super.onDestroy();
     }
-    
+
     @Override
     public IBinder onBind(Intent intent) {
         return null;

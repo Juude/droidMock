@@ -4,48 +4,44 @@ package com.lewa.droidtest;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
-import android.graphics.Point;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager.LayoutParams;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.Toast;
-
 import java.lang.reflect.Method;
 
 public class Utils {
     protected static final String TAG = "Utils";
     private static boolean DEBUG = true;
-    
+
     public static int getDensity(Activity activity) {
-        
+
         Display display = activity.getWindowManager().getDefaultDisplay();
         DisplayMetrics outMetrics = new DisplayMetrics();
         display.getMetrics(outMetrics);
         return outMetrics.densityDpi;
     }
-    
+
     public static ViewGroup.LayoutParams newLP(Context context, int width, int height) {
-        
+
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
-                                    dp(context, width),
-                                    dp(context, height)
-                                    );
+                dp(context, width),
+                dp(context, height)
+                );
         return params;
-    } 
-    
+    }
+
     public static int dp(Context context, int value) {
-        if(value < 0)
+        if (value < 0)
         {
             return value;
         }
         return (context.getResources().getDisplayMetrics().densityDpi * value);
     }
-    
+
     public static void logE(Object o, String msg, Throwable e)
     {
         if (DEBUG)
@@ -66,26 +62,12 @@ public class Utils {
     {
         logE(o, msg, null);
     }
-    
-    public static void showKeyboard(Context context, View v)
-    {
-        InputMethodManager imm = (InputMethodManager) context
-                .getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(v, InputMethodManager.SHOW_FORCED);
-    }
 
-    public static void hideKeyboard(Context context, View v)
-    {
-        InputMethodManager imm = (InputMethodManager) context
-                .getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-    }
-    
-    public static  void addButton(final Fragment fragment, 
+    public static void addButton(final Fragment fragment,
             ViewGroup layout,
             final String title,
-            final String onClick, 
-            final Class<?>[] parameters, 
+            final String onClick,
+            final Class<?>[] parameters,
             final Object[] objects) {
         Button button = new Button(fragment.getActivity());
         LayoutParams params = new LayoutParams();
@@ -94,10 +76,10 @@ public class Utils {
         button.setLayoutParams(params);
         button.setText(title);
         button.setOnClickListener(new View.OnClickListener() {
-            
+
             @Override
             public void onClick(View v) {
-                if(parameters == null) {
+                if (parameters == null) {
                     invoke(fragment, onClick);
                 }
                 else
@@ -108,18 +90,18 @@ public class Utils {
         });
         layout.addView(button);
     }
-    
-    public static  void addButton(final Fragment fragment, 
+
+    public static void addButton(final Fragment fragment,
             ViewGroup layout,
             final String title,
-            final String onClick) { 
+            final String onClick) {
         addButton(fragment, layout, title, onClick, null, null);
     }
-    
+
     private static void invoke(
-            final Fragment fragment, 
-            final String onClick, 
-            final Class<?>[] parameters, 
+            final Fragment fragment,
+            final String onClick,
+            final Class<?>[] parameters,
             final Object[] objects) {
         try {
             Log.e(TAG, "class is " + fragment.getClass());
@@ -130,9 +112,9 @@ public class Utils {
             e.printStackTrace();
         }
     }
-    
+
     private static void invoke(
-            final Fragment fragment, 
+            final Fragment fragment,
             final String onClick) {
         try {
             Log.e(TAG, "class is " + fragment.getClass());

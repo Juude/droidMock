@@ -1,3 +1,4 @@
+
 package com.lewa.droidtest.sdcard;
 
 import android.os.Environment;
@@ -9,8 +10,8 @@ import java.io.IOException;
 
 public class SdcardWriter {
     private String mTempPath = Environment.getExternalStorageDirectory()
-    .getPath() + File.separator + "0000.jpg";
-    
+            .getPath() + File.separator + "0000.jpg";
+
     public void write() {
         System.out.println("writing...to" + mTempPath);
         File dest = new File(mTempPath);

@@ -32,7 +32,7 @@ public class PictureUtils {
         {
             mCamera = Camera.open(CameraInfo.CAMERA_FACING_FRONT);
             Camera.Parameters params = mCamera.getParameters();
-            
+
             params.setPictureFormat(ImageFormat.JPEG);
             params.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
             params.setRotation(ROTATION);

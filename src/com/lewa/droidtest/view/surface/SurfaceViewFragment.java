@@ -1,3 +1,4 @@
+
 package com.lewa.droidtest.view.surface;
 
 import android.app.Fragment;
@@ -8,14 +9,16 @@ import android.view.ViewGroup;
 import android.view.WindowManager.LayoutParams;
 import android.widget.LinearLayout;
 
-public class SurfaceViewFragment extends Fragment{
+public class SurfaceViewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        LinearLayout layout  = new LinearLayout(getActivity());
-        LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        LinearLayout layout = new LinearLayout(getActivity());
+        LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT,
+                LayoutParams.MATCH_PARENT);
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setLayoutParams(layoutParams);
-        layout.addView(new StarFlagView(getActivity()), LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        layout.addView(new StarFlagView(getActivity()), LayoutParams.MATCH_PARENT,
+                LayoutParams.MATCH_PARENT);
         return layout;
     }
 }
