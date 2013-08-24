@@ -9,7 +9,7 @@ public class LayoutActivity extends Activity {
 
     public static final String KEY_LAYOUT = "com.android.contacts.KEY_LAYOUT";
     private static final String TAG = "LayoutActivity";
-
+    
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);

@@ -8,32 +8,44 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.ServiceManager;
 import android.util.Log;
+
+import com.lewa.droidtest.test.TestReceiver;
 
 
 public class AlarmManagerTest {
     private static final String TAG = "AlarmManagerTest";
     private BroadcastReceiver mReceiver;
-
-    public void setupCloseTaskIfNeeded(Context context) {
-        long currentMills = System.currentTimeMillis();
+    private long mDelay = 1000;
+    
+    public void setTask(Context context) {
         AlarmManager am = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-        //PendingIntent operation = PendingIntent.getActivity(context, 0, new Intent("com.lewa.action.AUTO_STARTS_ACTIVITY"),
+        //PendingIntent operation = PendingIntent.getActivity(context, 0, 
+        //        new Intent("com.android.deskclock.ALARM_ALERT"),
         //        PendingIntent.FLAG_UPDATE_CURRENT);
-        PendingIntent operation = PendingIntent.getBroadcast(context, 0, new Intent(TAG),
+        PendingIntent operation = PendingIntent.getBroadcast(context, 0, 
+                new Intent("com.android.deskclock.ALARM_ALERT"),
                 PendingIntent.FLAG_UPDATE_CURRENT);
-        am.set(AlarmManager.RTC_WAKEUP , currentMills + 2000, operation);
+        
+        long currentMills = System.currentTimeMillis();
+        am.set(AlarmManager.RTC_WAKEUP , currentMills + mDelay, operation);
     }
     
-    public static void cancelCloseTask(Context context) {
+    public static void unsetTask(Context context) {
         //PendingIntent operation = 
         AlarmManager am = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         //PendingIntent operation = PendingIntent.getActivity(context, 0, new Intent("com.lewa.action.AUTO_STARTS_ACTIVITY"),
         //        PendingIntent.FLAG_UPDATE_CURRENT);
         PendingIntent operation = PendingIntent.getBroadcast(context, 0, new Intent(TAG),
                 PendingIntent.FLAG_UPDATE_CURRENT);
+        
         operation.cancel();//works
-        //am.cancel(operation);//works
+        am.cancel(operation);//works
+    }
+    
+    public static void getAlarms(Context context) {
+        ServiceManager.getService(Context.ALARM_SERVICE);
     }
     
     public void startTest(Context context, Bundle bundle) {
@@ -43,11 +55,12 @@ public class AlarmManagerTest {
                 Log.e(TAG, "received.. TAG");
             }
         };
+        mDelay = TestReceiver.getInt(bundle, "delay", 1000);
         context.getApplicationContext().registerReceiver(mReceiver, new IntentFilter(TAG));
-        setupCloseTaskIfNeeded(context);
+        setTask(context);
         if(bundle.getString("close") != null) {
             Log.e(TAG, "please close");
-            cancelCloseTask(context);
+            unsetTask(context);
         }
     }
     

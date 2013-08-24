@@ -70,17 +70,25 @@
         <service android:name="com.lewa.droidtest.lock.LockDialogService" >
         </service>
 
-        <receiver android:name="com.lewa.droidtest.am.TestReceiver" >
+        <receiver android:name="com.lewa.droidtest.am.Am" >
             <intent-filter>
                 <action android:name="droidTest.am" >
                 </action>
             </intent-filter>
         </receiver>
         
-        <receiver android:name="com.lewa.droidtest.TestReceiver"
+        <receiver android:name="com.lewa.droidtest.test.TestReceiver"
             android:enabled="true" >
             <intent-filter>
                 <action android:name="android." >
+                </action>
+            </intent-filter>
+        </receiver>
+        
+        <receiver android:name="com.lewa.droidtest.alarm.AlarmReceiver"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.android.deskclock.ALARM_ALERT" >
                 </action>
             </intent-filter>
         </receiver>

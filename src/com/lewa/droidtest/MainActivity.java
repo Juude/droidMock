@@ -10,15 +10,15 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 
-import com.lewa.droidtest.adb.TurnOffAdbFragment;
+import com.lewa.droidtest.adb.SettingsTest;
 import com.lewa.droidtest.animation.AnimationFragment;
 import com.lewa.droidtest.app.AppFragment;
 import com.lewa.droidtest.data.DataFragment;
 import com.lewa.droidtest.lock.LockFragment;
 import com.lewa.droidtest.mms.sms.SmsSenderFragment;
 import com.lewa.droidtest.resources.ResourcesFragment;
-import com.lewa.droidtest.screen.ScreenSizeFragment;
-import com.lewa.droidtest.statusbar.ShowStatusbarFragment;
+import com.lewa.droidtest.screen.ScreenTest;
+import com.lewa.droidtest.statusbar.StatusBarTest;
 import com.lewa.droidtest.su.SuTesterFragment;
 import com.lewa.droidtest.view.TextFragment;
 import com.lewa.droidtest.view.linkedbutton.LinkedButtonFragment;
@@ -37,11 +37,11 @@ public class MainActivity extends Activity {
             DataFragment.class,
             TextFragment.class,
             LockFragment.class,
-            TurnOffAdbFragment.class,
+            SettingsTest.class,
             LinkedButtonFragment.class,
-            ScreenSizeFragment.class,
+            ScreenTest.class,
             SmsSenderFragment.class,
-            ShowStatusbarFragment.class,
+            StatusBarTest.class,
             AppFragment.class
 
     };
