@@ -11,39 +11,26 @@ import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 
 import com.lewa.droidtest.adb.SettingsTest;
-import com.lewa.droidtest.animation.AnimationFragment;
 import com.lewa.droidtest.app.AppFragment;
 import com.lewa.droidtest.data.DataFragment;
 import com.lewa.droidtest.lock.LockFragment;
 import com.lewa.droidtest.mms.sms.SmsSenderFragment;
-import com.lewa.droidtest.resources.ResourcesFragment;
+import com.lewa.droidtest.resources.ResourcesTest;
 import com.lewa.droidtest.screen.ScreenTest;
 import com.lewa.droidtest.statusbar.StatusBarTest;
-import com.lewa.droidtest.su.SuTesterFragment;
-import com.lewa.droidtest.view.TextFragment;
-import com.lewa.droidtest.view.linkedbutton.LinkedButtonFragment;
-import com.lewa.droidtest.view.list.ListAdapterTest;
-import com.lewa.droidtest.view.surface.SurfaceViewFragment;
 
 import java.util.ArrayList;
 
 public class MainActivity extends Activity {
     private static final Class<?>[] FRAGMENTS = {
-            AnimationFragment.class,
-            SuTesterFragment.class,
-            ListAdapterTest.class,
-            SurfaceViewFragment.class,
-            ResourcesFragment.class,
+            ResourcesTest.class,
             DataFragment.class,
-            TextFragment.class,
             LockFragment.class,
             SettingsTest.class,
-            LinkedButtonFragment.class,
             ScreenTest.class,
             SmsSenderFragment.class,
             StatusBarTest.class,
             AppFragment.class
-
     };
 
     @Override

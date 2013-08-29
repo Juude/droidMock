@@ -48,7 +48,7 @@ public class AlarmManagerTest {
         ServiceManager.getService(Context.ALARM_SERVICE);
     }
     
-    public void startTest(Context context, Bundle bundle) {
+    public void test(Context context, Bundle bundle) {
         mReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {

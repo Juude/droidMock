@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.lewa.droidtest.Utils;
 
-public class ResourcesFragment extends Fragment {
+public class ResourcesTest extends Fragment {
     protected static final String TAG = "DataFragment";
     private Activity mActivity;
 

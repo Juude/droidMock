@@ -1,7 +1,5 @@
 package com.lewa.droidtest.test;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.lang.reflect.Method;
 
 import android.content.BroadcastReceiver;
@@ -11,23 +9,25 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.lewa.droidtest.alarm.AlarmManagerTest;
+import com.lewa.droidtest.alarm.AlarmPersist;
 import com.lewa.droidtest.data.ParcelableTest;
 import com.lewa.droidtest.pm.Pm;
 import com.lewa.droidtest.am.Am;
 import com.lewa.droidtest.screen.ScreenTest;
+
+import com.lewa.droidtest.test.TestUtils.TestMe;
+
 public class TestReceiver extends BroadcastReceiver{
     private static final String TAG = "TestReceiver";
 
-    @Retention(RetentionPolicy.RUNTIME)
-    public @interface TestMe{}
-    
+
     @Override
     public void onReceive(Context context, Intent intent) {
         try {
             final String action = getString(intent.getExtras(), "action", "ACTION!!");
             Log.e(TAG, "com.lewa.droidtest executing..." + action);
             Method actionMethod =  getClass().getMethod(action, Context.class, Intent.class);
-            if(actionMethod.getAnnotation(TestMe.class) != null) {
+            if(actionMethod.getAnnotation(TestUtils.TestMe.class) != null) {
                 actionMethod.invoke(this, context,intent);
             }
         } catch (Exception e) {
@@ -60,8 +60,13 @@ public class TestReceiver extends BroadcastReceiver{
     @TestMe
     public void alarmManagerTest(Context context, Intent intent) {
         AlarmManagerTest test = new AlarmManagerTest();
-        test.startTest(context, intent.getExtras());
+        test.test(context, intent.getExtras());
         test.endTest(context);
+    }
+    @TestMe
+    public void alarmPersist(Context context, Intent intent) {
+        AlarmPersist test = new AlarmPersist(context, intent.getExtras());
+        test.getAlarmPersist();
     }
     
     @TestMe
@@ -81,4 +86,6 @@ public class TestReceiver extends BroadcastReceiver{
         ScreenTest test = new ScreenTest(context, intent);
         test.test();
     }
+    
+    
 }
