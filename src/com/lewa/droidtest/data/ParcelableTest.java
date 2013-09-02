@@ -5,7 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 
-import com.android.org.bouncycastle.util.Arrays;
+import java.util.Arrays;
 
 public class ParcelableTest implements Parcelable{
     private int mData;

@@ -12,6 +12,7 @@ import com.lewa.droidtest.alarm.AlarmManagerTest;
 import com.lewa.droidtest.alarm.AlarmPersist;
 import com.lewa.droidtest.data.ParcelableTest;
 import com.lewa.droidtest.pm.Pm;
+import com.lewa.droidtest.power.PowerManagerTest;
 import com.lewa.droidtest.am.Am;
 import com.lewa.droidtest.screen.ScreenTest;
 
@@ -87,5 +88,10 @@ public class TestReceiver extends BroadcastReceiver{
         test.test();
     }
     
+    @TestMe
+    public void ppm(Context context, Intent intent) {
+        PowerManagerTest test = new PowerManagerTest(context, intent.getExtras());
+        test.test();
+    }
     
 }

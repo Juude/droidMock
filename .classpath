@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-<!-- 	<classpathentry kind="lib" path="/home/jdsong/projects/mtk6577_jb/out/target/common/obj/JAVA_LIBRARIES/framework_intermediates/classes.jar" sourcepath="/home/jdsong/projects/mtk6577_jb/frameworks/base/core/java"/>
-	<classpathentry kind="lib" path="/home/jdsong/projects/mtk6577_jb/out/target/common/obj/JAVA_LIBRARIES/lewa-framework_intermediates/classes.jar"/>
-	<classpathentry kind="lib" path="/home/jdsong/projects/mtk6577_jb/out/target/common/obj/JAVA_LIBRARIES/secondary-framework_intermediates/classes.jar"/>
- -->		
- 	<!--  <classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MTK6577_JB"/> -->
-	<classpathentry kind="lib" path="/home/jdsong/projects/mtk6577_jb/out/target/common/obj/JAVA_LIBRARIES/lewa-framework_intermediates/classes.jar" sourcepath="/home/jdsong/projects/mtk6577_jb/vendor/lewa/frameworks/base/core/java"/>
-	
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MTK6589"/>
-	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="gen"/>
-	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
-	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
-	<classpathentry kind="output" path="bin/classes"/>
+<!--    <classpathentry kind="lib" path="/home/jdsong/projects/mtk6577_jb/out/target/common/obj/JAVA_LIBRARIES/framework_intermediates/classes.jar" sourcepath="/home/jdsong/projects/mtk6577_jb/frameworks/base/core/java"/>
+    <classpathentry kind="lib" path="/home/jdsong/projects/mtk6577_jb/out/target/common/obj/JAVA_LIBRARIES/lewa-framework_intermediates/classes.jar"/>
+    <classpathentry kind="lib" path="/home/jdsong/projects/mtk6577_jb/out/target/common/obj/JAVA_LIBRARIES/secondary-framework_intermediates/classes.jar"/>
+ -->
+    <!--<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MTK6577_JB"/> -->
+    <classpathentry kind="lib" path="/home/jdsong/projects/mtk6577_jb/out/target/common/obj/JAVA_LIBRARIES/lewa-framework_intermediates/classes.jar" sourcepath="/home/jdsong/projects/mtk6577_jb/vendor/lewa/frameworks/base/core/java"/>
+    <classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MTK6589"/>
+    <classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+    <classpathentry kind="src" path="src"/>
+    <classpathentry kind="src" path="gen"/>
+    <classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+    <classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+    <classpathentry kind="output" path="bin/classes"/>
 </classpath>

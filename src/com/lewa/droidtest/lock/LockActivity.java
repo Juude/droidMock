@@ -112,7 +112,7 @@ public class LockActivity extends Activity {
                 }
             });
 
-            mPasswordEdit = ((EditText) findViewById(R.id.editPassword));
+            mPasswordEdit = null;
             mPasswordEdit.setFilters(new InputFilter[] {
                 new InputFilter() {
 

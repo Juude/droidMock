@@ -14,19 +14,16 @@
         android:id="@+id/textTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/lock"
-        android:layout_toRightOf="@id/lock"
          />
     
 	<LinearLayout
+	   android:orientation="vertical"
 	   android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-	   android:layout_below="@id/lock"
 	   android:id="@+id/divider"
 />
 
     <EditText
-        android:id="@+id/editPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10">
@@ -36,14 +33,12 @@
         android:id="@+id/passwordHintDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_below="@id/editPassword" />
+        android:visibility="gone" />
     
     <CheckBox
         android:id="@+id/checkBox1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/passwordHintDown">
+        android:layout_height="wrap_content">
     </CheckBox>   
     
  />
@@ -59,4 +54,5 @@
         android:layout_height="wrap_content"
         android:id="@+id/buttonShowKeyboard"
         android:text="showKeyboard" />
+    
 </LinearLayout>
