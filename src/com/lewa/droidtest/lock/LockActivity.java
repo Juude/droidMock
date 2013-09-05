@@ -84,7 +84,7 @@ public class LockActivity extends Activity {
     }
 
     public class LockView extends LinearLayout {
-        private static final String TAG = "LockView";
+        public static final String TAG = "LockView";
         private Activity mParent = null;
         private EditText mPasswordEdit;
         private PowerManager mPowerManager;
