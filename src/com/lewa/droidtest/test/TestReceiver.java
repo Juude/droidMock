@@ -16,6 +16,7 @@ import com.lewa.droidtest.power.PowerManagerTest;
 import com.lewa.droidtest.am.Am;
 import com.lewa.droidtest.screen.ScreenTest;
 
+import com.lewa.droidtest.telephony.TelephonyTest;
 import com.lewa.droidtest.test.TestUtils.TestMe;
 
 public class TestReceiver extends BroadcastReceiver{
@@ -91,6 +92,12 @@ public class TestReceiver extends BroadcastReceiver{
     @TestMe
     public void ppm(Context context, Intent intent) {
         PowerManagerTest test = new PowerManagerTest(context, intent.getExtras());
+        test.test();
+    }
+    
+    @TestMe
+    public void telephoy(Context context, Intent intent) {
+        TelephonyTest test = new TelephonyTest(context, intent.getExtras());
         test.test();
     }
     

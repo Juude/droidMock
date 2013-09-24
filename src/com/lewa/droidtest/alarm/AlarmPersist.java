@@ -14,7 +14,6 @@ public class AlarmPersist {
         mBundle = bundle;
     }
     public void getAlarmPersist() {
-        
         Log.e(TAG, "alarm persist" + 
               lewa.content.AlarmPersists.getInstance(mContext)
               .getPackages()

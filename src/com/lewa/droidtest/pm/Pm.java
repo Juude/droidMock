@@ -24,7 +24,7 @@ public class Pm {
     }
     public void list(){
         if(mArgs.containsKey("broadcast")) {
-            String packageName = mArgs.getString("packageName");
+            String packageName = mArgs.getString("package");
             Intent i = new Intent();
             if(packageName != null) {
                 i.setPackage(packageName);
