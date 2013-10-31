@@ -23,6 +23,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity {
     private static final Class<?>[] FRAGMENTS = {
+            IndexFragment.class,
             ResourcesTest.class,
             DataFragment.class,
             LockFragment.class,

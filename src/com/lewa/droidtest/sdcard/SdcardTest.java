@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Environment;
 
 import com.lewa.droidtest.test.TestReceiver;
+import com.lewa.droidtest.test.TestUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,7 +27,7 @@ public class SdcardTest {
     }
     
     public void write() {
-        String path = TestReceiver.getString(mBundle, "path", Environment.getExternalStorageDirectory()
+        String path = TestUtils.getString(mBundle, "path", Environment.getExternalStorageDirectory()
                 .getPath() + File.separator + "0000.jpg");
         
         File dest = new File(path);

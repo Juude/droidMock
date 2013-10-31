@@ -10,7 +10,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-import com.lewa.droidtest.test.TestReceiver;
+import com.lewa.droidtest.test.TestUtils;
+
 import java.util.List;
 
 public class Am {
@@ -30,7 +31,7 @@ public class Am {
     }
     
     public void startAll() {
-        int count = TestReceiver.getInt(mBundle, "count", 15);
+        int count = TestUtils.getInt(mBundle, "count", 15);
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_LAUNCHER);

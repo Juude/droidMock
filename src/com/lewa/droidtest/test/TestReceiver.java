@@ -5,16 +5,21 @@ import java.lang.reflect.Method;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 
+import com.lewa.droidtest.adb.SettingsTest;
 import com.lewa.droidtest.alarm.AlarmManagerTest;
 import com.lewa.droidtest.alarm.AlarmPersist;
 import com.lewa.droidtest.data.ParcelableTest;
+import com.lewa.droidtest.gps.GpsTest;
+import com.lewa.droidtest.mms.MmsSenderTest;
+import com.lewa.droidtest.network.HttpClientTest;
+import com.lewa.droidtest.network.NetworkTest;
 import com.lewa.droidtest.pm.Pm;
 import com.lewa.droidtest.power.PowerManagerTest;
 import com.lewa.droidtest.am.Am;
 import com.lewa.droidtest.screen.ScreenTest;
+import com.lewa.droidtest.statusbar.StatusBarTest;
 
 import com.lewa.droidtest.telephony.TelephonyTest;
 import com.lewa.droidtest.test.TestUtils.TestMe;
@@ -25,8 +30,13 @@ public class TestReceiver extends BroadcastReceiver{
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        invoke(context, intent);
+    }
+   
+    
+    public void invoke(Context context, Intent intent) {
         try {
-            final String action = getString(intent.getExtras(), "action", "ACTION!!");
+            final String action = TestUtils.getString(intent.getExtras(), "action", "ACTION!!");
             Log.e(TAG, "com.lewa.droidtest executing..." + action);
             Method actionMethod =  getClass().getMethod(action, Context.class, Intent.class);
             if(actionMethod.getAnnotation(TestUtils.TestMe.class) != null) {
@@ -35,23 +45,6 @@ public class TestReceiver extends BroadcastReceiver{
         } catch (Exception e) {
             e.printStackTrace();
         } 
-    }
-    
-    public static String getString(Bundle bundle, String key, String def) {
-        String result = bundle.getString(key);
-        result = result == null ? def : result;
-        return result;
-    }
-    
-    public static int getInt(Bundle bundle, String key, int def) {
-        String str = bundle.getString(key);
-        int result = def;
-        try {
-            result = Integer.parseInt(str);
-        }
-        catch(Exception e) {
-        }
-        return result;
     }
     
     @TestMe
@@ -64,6 +57,7 @@ public class TestReceiver extends BroadcastReceiver{
         AlarmManagerTest test = new AlarmManagerTest();
         test.test(context, intent.getExtras());
         test.endTest(context);
+        
     }
     @TestMe
     public void alarmPersist(Context context, Intent intent) {
@@ -74,7 +68,7 @@ public class TestReceiver extends BroadcastReceiver{
     @TestMe
     public void Pm(Context context, Intent intent) {
         Pm pm = new Pm(context, intent);
-        pm.list();
+        pm.test();
     }
     
     @TestMe
@@ -96,9 +90,44 @@ public class TestReceiver extends BroadcastReceiver{
     }
     
     @TestMe
-    public void telephoy(Context context, Intent intent) {
+    public void telephony(Context context, Intent intent) {
         TelephonyTest test = new TelephonyTest(context, intent.getExtras());
         test.test();
     }
     
+    @TestMe
+    public void settings(Context context, Intent intent) {
+        SettingsTest test = new SettingsTest(context, intent.getExtras());
+        test.test();
+    }
+    
+    @TestMe
+    public void mms(Context context, Intent intent) {
+        Test test = new MmsSenderTest(context, intent.getExtras());
+        test.test();
+    }
+    
+    @TestMe
+    public void network(Context context, Intent intent) {
+        Test test = new NetworkTest(context, intent.getExtras());
+        test.test();
+    }
+    
+    @TestMe
+    public void statusbar(Context context, Intent intent) {
+        Test test = new StatusBarTest(context, intent.getExtras());
+        test.test();
+    }
+    
+    @TestMe
+    public void http(Context context, Intent intent) {
+        Test test = new HttpClientTest(context, intent.getExtras());
+        test.test();
+    }
+    
+    @TestMe
+    public void gps(Context context, Intent intent) {
+        Test test = new GpsTest(context, intent.getExtras());
+        test.test();
+    }
 }

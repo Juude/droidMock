@@ -105,6 +105,9 @@ public class MmsSenderService extends Service {
 
     public void sendMms()
     {
+        //temple: 
+        mHandler.sendEmptyMessage(MESSAGE_SEND_MMS);
+    /*
         if (!isMmsApn())
         {
             mHandler.sendEmptyMessage(MESSAGE_START_APN);
@@ -113,6 +116,7 @@ public class MmsSenderService extends Service {
         {
             mHandler.sendEmptyMessage(MESSAGE_SEND_MMS);
         }
+    */
     }
 
     private boolean isMmsApn()
@@ -273,7 +277,9 @@ public class MmsSenderService extends Service {
         mMmsInfo.addImagePart(f);
         initApn();
         mConnectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        Log.e(TAG, "sendMms start");
         sendMms();
+        Log.e(TAG, "sendMms end");
         return super.onStartCommand(intent, flags, startId);
     }
 

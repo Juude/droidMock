@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.os.ServiceManager;
 import android.util.Log;
 
-import com.lewa.droidtest.test.TestReceiver;
+import com.lewa.droidtest.test.TestUtils;
 
 
 public class AlarmManagerTest {
@@ -55,7 +55,7 @@ public class AlarmManagerTest {
                 Log.e(TAG, "received.. TAG");
             }
         };
-        mDelay = TestReceiver.getInt(bundle, "delay", 1000);
+        mDelay = TestUtils.getInt(bundle, "delay", 1000);
         context.getApplicationContext().registerReceiver(mReceiver, new IntentFilter(TAG));
         setTask(context);
         if(bundle.getString("close") != null) {

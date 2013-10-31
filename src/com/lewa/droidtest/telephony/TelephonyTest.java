@@ -17,7 +17,7 @@ public class TelephonyTest extends Test{
 
     @Override
     public void test() {
-        
+        siminfo();
     }
     
     public void siminfo() {

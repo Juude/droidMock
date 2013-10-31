@@ -27,7 +27,11 @@ public class ScreenTest {
         display.getMetrics(outMetrics);
         Point size = new Point();
         display.getSize(size);
-        String info = "width : " + size.x + "height" + size.y +
+        Point realSize = new Point();
+        display.getRealSize(realSize);
+        
+        String info = "realwidth : " + realSize.x + "realHeight: " + realSize.y + 
+                "width : " + size.x + "height" + size.y +
                 "density: " + outMetrics.density + "densityDpi" + outMetrics.densityDpi
                 + "scaledDensity " + outMetrics.scaledDensity;
         
@@ -38,6 +42,7 @@ public class ScreenTest {
         
         Log.e("ScreenTest", info);
     }
+   
     
     public void test() {
         getScreenSize();
