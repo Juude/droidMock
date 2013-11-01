@@ -14,7 +14,6 @@ public class SettingsTest {
     private Context mContext;
     public SettingsTest(Context context, Bundle bundles) {
         mContext =  context;
-
     }
     
     public void getAdb() {

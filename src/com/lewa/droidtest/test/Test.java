@@ -11,5 +11,8 @@ public abstract class Test {
         mExtras = extras;
     }
     
+    public void setArgs(Bundle extras) {
+        mExtras = extras;
+    }
     public abstract void test();
 }

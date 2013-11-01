@@ -7,6 +7,8 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 
@@ -23,6 +25,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity {
     private static final Class<?>[] FRAGMENTS = {
+            AppFragment.class,
             IndexFragment.class,
             ResourcesTest.class,
             DataFragment.class,
@@ -30,8 +33,7 @@ public class MainActivity extends Activity {
             SettingsTest.class,
             ScreenTest.class,
             SmsSenderFragment.class,
-            StatusBarTest.class,
-            AppFragment.class
+            StatusBarTest.class
     };
 
     @Override
@@ -42,6 +44,15 @@ public class MainActivity extends Activity {
         setContentView(layout);
         initActionBar();
     }
+
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater(); 
+        inflater.inflate(R.menu.activity_main, menu);
+        return true;
+    }
+
 
     private void initActionBar() {
         ActionBar bar = getActionBar();

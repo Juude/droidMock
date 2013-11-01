@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.lewa.droidtest.test.Test;
+import com.lewa.droidtest.test.TestUtils;
+
+import java.lang.reflect.InvocationTargetException;
 
 public class NetworkTest extends Test{
 
@@ -19,7 +22,13 @@ public class NetworkTest extends Test{
 
     @Override
     public void test() {
-        profile();
+        try {
+            NetworkTest.class.getMethod(TestUtils.getString(mExtras, "method", "profile"))
+            .invoke(this);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     public void profile() {
@@ -30,9 +39,19 @@ public class NetworkTest extends Test{
         ConnectivityManager cm = (ConnectivityManager)mContext
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = cm.getActiveNetworkInfo();
-        Log.e(TAG, "connnected? : " + (info.getState() ==  NetworkInfo.State.CONNECTED) + "\n" + 
+        Log.e(TAG, "connnected? : " + dumpInfo(info) + "\n" + 
                     "getMobileDataEnabled : " + cm.getMobileDataEnabled() + "\n" + 
-                    "setWifiEnabled" + (wm.getWifiState() == WifiManager.WIFI_STATE_ENABLED));
+                    "getWifiEnabled : " + (wm.getWifiState() == WifiManager.WIFI_STATE_ENABLED));
+        HttpUtils.requestUrl(mContext, "http://www.baidu.com");
+    }
+    
+    private String dumpInfo(NetworkInfo info) {
+        if(info == null) {
+            return null;
+        }
+        else {
+            return "" + (info.getState() ==  NetworkInfo.State.CONNECTED);
+        }
     }
     
     public void toggle() {

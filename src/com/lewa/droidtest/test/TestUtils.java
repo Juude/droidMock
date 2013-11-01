@@ -1,7 +1,12 @@
 
 package com.lewa.droidtest.test;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+
+import com.lewa.droidtest.ToastService;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -26,6 +31,13 @@ public class TestUtils {
         catch(Exception e) {
         }
         return result;
+    }
+    
+    public static void Toast(Context context, String TAG, String msg) {
+        Log.e(TAG, msg);
+        Intent i = new Intent(context, ToastService.class);
+        i.putExtra("message", msg);
+        context.startService(i);
     }
 
 }

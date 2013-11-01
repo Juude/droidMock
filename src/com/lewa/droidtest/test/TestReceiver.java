@@ -67,7 +67,7 @@ public class TestReceiver extends BroadcastReceiver{
     
     @TestMe
     public void Pm(Context context, Intent intent) {
-        Pm pm = new Pm(context, intent);
+        Pm pm = new Pm(context, intent.getExtras());
         pm.test();
     }
     

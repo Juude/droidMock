@@ -28,12 +28,20 @@ public class IndexFragment extends Fragment{
         HashMap<String, String> cmdWlan = new HashMap<String, String>();
         cmdWlan.put("action", "network");
         cmdWlan.put("wifi", "1");
+        cmdWlan.put("method", "toggle");
+
         mShortCuts.put("TOGGLE WLAN STATE", cmdWlan);
         
         HashMap<String, String> cmdMobile = new HashMap<String, String>();
         cmdMobile.put("action", "network");
         cmdMobile.put("mobile", "1");
+        cmdMobile.put("method", "toggle");
+
         mShortCuts.put("TOGGLE MOBILE STATE", cmdMobile);
+        
+        HashMap<String, String> testNetwork = new HashMap<String, String>();
+        testNetwork.put("action", "network");
+        mShortCuts.put("TEST NETWORK", testNetwork);
         super.onCreate(savedInstanceState);
     }
 
