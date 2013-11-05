@@ -36,7 +36,7 @@ public class TestReceiver extends BroadcastReceiver{
     
     public void invoke(Context context, Intent intent) {
         try {
-            final String action = TestUtils.getString(intent.getExtras(), "action", "ACTION!!");
+            final String action = TestUtils.getString(intent.getExtras(), "a", "ACTION!!");
             Log.e(TAG, "com.lewa.droidtest executing..." + action);
             Method actionMethod =  getClass().getMethod(action, Context.class, Intent.class);
             if(actionMethod.getAnnotation(TestUtils.TestMe.class) != null) {

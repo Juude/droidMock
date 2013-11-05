@@ -7,4 +7,10 @@
  	<string name="test_long">d</string>
  	<string name="linked_text"><u>This is linked</u></string>
  	<string name="action_search">Search</string>
+ 	<string name="search_hint">search_hint</string>
+ 	<string name="search_label">search_label</string>
+ 	<string name="search_global_description">search_global_description</string>
+    <string name="show_launchable">L</string>
+    <string name="not_show_launchable">NL</string>
+    
 </resources>

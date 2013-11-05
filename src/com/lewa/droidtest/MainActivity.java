@@ -6,11 +6,19 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
-import android.view.MenuInflater;
+import android.view.View;
+import android.view.View.OnKeyListener;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
+import android.widget.SearchView;
+import android.widget.SearchView.OnQueryTextListener;
 
 import com.lewa.droidtest.adb.SettingsTest;
 import com.lewa.droidtest.app.AppFragment;
@@ -22,8 +30,12 @@ import com.lewa.droidtest.screen.ScreenTest;
 import com.lewa.droidtest.statusbar.StatusBarTest;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainActivity extends Activity {
+    
+    private HashMap<Class<?>, Fragment> mFragments = new HashMap<Class<?>, Fragment>();
+    
     private static final Class<?>[] FRAGMENTS = {
             AppFragment.class,
             IndexFragment.class,
@@ -35,7 +47,31 @@ public class MainActivity extends Activity {
             SmsSenderFragment.class,
             StatusBarTest.class
     };
+    private static final String TAG = "MainActivity";
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_main, menu);
+        SearchManager searchManager = (SearchManager) getSystemService( Context.SEARCH_SERVICE );
+        SearchView searchView = (SearchView) menu.findItem( R.id.action_search ).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo( getComponentName() ) );
+        searchView.setOnQueryTextListener(new OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                onSearch(newText);
+                return true;
+            }
+            
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,15 +80,24 @@ public class MainActivity extends Activity {
         setContentView(layout);
         initActionBar();
     }
-
+    
+    private void onSearch(String text) {
+        
+        Fragment currentFragment = mFragments.get(FRAGMENTS[getActionBar().getSelectedNavigationIndex()]);
+        try {
+            currentFragment.getClass().getMethod("onSearch", String.class).invoke(currentFragment, text);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater(); 
-        inflater.inflate(R.menu.activity_main, menu);
-        return true;
+    protected void onNewIntent(Intent intent) {
+        Log.e(TAG, "onNewIntent");
+        super.onNewIntent(intent);
+        onSearch(intent.getStringExtra("query"));
     }
-
 
     private void initActionBar() {
         ActionBar bar = getActionBar();
@@ -89,8 +134,14 @@ public class MainActivity extends Activity {
             try {
                 FragmentManager manager = getFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
+                Class<?> classFragment = FRAGMENTS[position];
+                Fragment fragment = mFragments.get(classFragment);
+                if(fragment == null) {
+                    fragment = (Fragment) classFragment.newInstance();
+                }
+                mFragments.put(classFragment, fragment);
                 transaction.replace(android.R.id.content,
-                        (Fragment) FRAGMENTS[position].newInstance(), "");
+                        fragment, "");
                 transaction.commit();
             }
             catch (Exception e) {

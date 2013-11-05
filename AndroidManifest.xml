@@ -32,22 +32,35 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
+        <meta-data
+            android:name="android.app.default_searchable"
+            android:value=".MainActivity" />
         <activity
             android:name="com.lewa.droidtest.MainActivity"
+            android:launchMode="singleTask"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.HOME"/>
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+             <meta-data
+             android:name="android.app.searchable"
+             android:resource="@xml/searchable" />
         </activity>
         <activity
             android:name="com.lewa.droidtest.lock.LockActivity"
             android:label="@string/app_name"
-            android:windowSoftInputMode="stateVisible" >
+            android:windowSoftInputMode="stateVisible"
+            android:clearTaskOnLaunch="true" >
             <intent-filter>
+                
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME"/>
             </intent-filter>
         </activity>
         <activity
