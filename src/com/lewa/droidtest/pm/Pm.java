@@ -9,12 +9,12 @@ import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.lewa.droidtest.test.Test;
-import com.lewa.droidtest.test.TestUtils;
+import com.lewa.droidtest.mock.Mocker;
+import com.lewa.droidtest.mock.MockUtils;
 
 import java.util.List;
 
-public class Pm extends Test{
+public class Pm extends Mocker{
     private PackageManager mPm;
     private static final String TAG = "Pm";
     public Pm(Context context, Bundle extras) {
@@ -60,7 +60,7 @@ public class Pm extends Test{
     
     public void start() {
         if(mExtras.containsKey("package")) {
-            String packageName = TestUtils.getString(mExtras, "package", "com.lewa.netmgr");
+            String packageName = MockUtils.getString(mExtras, "package", "com.lewa.netmgr");
             Intent launchIntent = mContext.getPackageManager().getLaunchIntentForPackage(packageName);
             mContext.startActivity(launchIntent);
         }
@@ -69,7 +69,7 @@ public class Pm extends Test{
         }
     }
     public void test() {
-        String method = TestUtils.getString(mExtras, "method", "list");
+        String method = MockUtils.getString(mExtras, "method", "list");
         try {
             Pm.class.getMethod(method).invoke(this);
         }

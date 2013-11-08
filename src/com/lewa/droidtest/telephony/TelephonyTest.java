@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.provider.Telephony.SIMInfo;
 import android.util.Log;
 
-import com.lewa.droidtest.test.Test;
+import com.lewa.droidtest.mock.Mocker;
 
-public class TelephonyTest extends Test{
+public class TelephonyTest extends Mocker{
 
     private static final String TAG = "Telephony";
 

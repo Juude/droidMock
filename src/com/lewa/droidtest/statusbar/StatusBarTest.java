@@ -7,10 +7,10 @@ import android.os.ServiceManager;
 import android.util.Log;
 import android.content.Context;
 import com.android.internal.statusbar.IStatusBarService;
-import com.lewa.droidtest.test.Test;
-import com.lewa.droidtest.test.TestUtils;
+import com.lewa.droidtest.mock.Mocker;
+import com.lewa.droidtest.mock.MockUtils;
 
-public class StatusBarTest extends Test{
+public class StatusBarTest extends Mocker{
     private static final String TAG = "StatusBarTest";
     public Context mContext;
     
@@ -20,7 +20,7 @@ public class StatusBarTest extends Test{
         super(context, bundle);    }
     
     public void test() {
-        String method = TestUtils.getString(mExtras, "method", "toggle");
+        String method = MockUtils.getString(mExtras, "method", "toggle");
         try {
             StatusBarTest.class.getMethod(method).invoke(this);
         }

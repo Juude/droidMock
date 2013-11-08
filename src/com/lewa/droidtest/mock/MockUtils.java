@@ -1,5 +1,5 @@
 
-package com.lewa.droidtest.test;
+package com.lewa.droidtest.mock;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,9 +11,9 @@ import com.lewa.droidtest.ToastService;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-public class TestUtils {
+public class MockUtils {
     @Retention(RetentionPolicy.RUNTIME)
-    static public @interface TestMe {
+    static public @interface Mock {
     }
     
     public static String getString(Bundle bundle, String key, String def) {

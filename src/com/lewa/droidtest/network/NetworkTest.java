@@ -7,12 +7,10 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.lewa.droidtest.test.Test;
-import com.lewa.droidtest.test.TestUtils;
+import com.lewa.droidtest.mock.Mocker;
+import com.lewa.droidtest.mock.MockUtils;
 
-import java.lang.reflect.InvocationTargetException;
-
-public class NetworkTest extends Test{
+public class NetworkTest extends Mocker{
 
     private static final String TAG = "NetworkTest";
 
@@ -23,7 +21,7 @@ public class NetworkTest extends Test{
     @Override
     public void test() {
         try {
-            NetworkTest.class.getMethod(TestUtils.getString(mExtras, "method", "profile"))
+            NetworkTest.class.getMethod(MockUtils.getString(mExtras, "method", "profile"))
             .invoke(this);
         }
         catch (Exception e) {

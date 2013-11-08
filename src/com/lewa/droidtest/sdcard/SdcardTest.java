@@ -5,8 +5,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Environment;
 
-import com.lewa.droidtest.test.TestReceiver;
-import com.lewa.droidtest.test.TestUtils;
+import com.lewa.droidtest.mock.MockReceiver;
+import com.lewa.droidtest.mock.MockUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,7 +27,7 @@ public class SdcardTest {
     }
     
     public void write() {
-        String path = TestUtils.getString(mBundle, "path", Environment.getExternalStorageDirectory()
+        String path = MockUtils.getString(mBundle, "path", Environment.getExternalStorageDirectory()
                 .getPath() + File.separator + "0000.jpg");
         
         File dest = new File(path);

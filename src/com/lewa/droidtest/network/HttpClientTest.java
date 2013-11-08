@@ -6,8 +6,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.format.Time;
 import android.util.Log;
-import com.lewa.droidtest.test.Test;
-import com.lewa.droidtest.test.TestUtils;
+
+import com.lewa.droidtest.mock.Mocker;
+import com.lewa.droidtest.mock.MockUtils;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -19,7 +20,7 @@ import org.apache.http.client.methods.HttpUriRequest;
 import java.io.DataInputStream;
 import java.io.IOException;
 
-public class HttpClientTest extends Test{
+public class HttpClientTest extends Mocker{
 
     protected static final String TAG = "HttpClientTest";
 
@@ -51,7 +52,7 @@ public class HttpClientTest extends Test{
         else {
             Log.e(TAG, "requesting" + t.year);
         }
-        final String content = TestUtils.getString(mExtras, "content", "songjindetest");
+        final String content = MockUtils.getString(mExtras, "content", "songjindetest");
         AndroidHttpClient httpClient = AndroidHttpClient.newInstance("jdsong", mContext);
         HttpUriRequest request = new HttpGet("http://admin.lewatek.com/flowlog/savelog?str=" + content);
         try {
@@ -61,7 +62,7 @@ public class HttpClientTest extends Test{
                         public Void handleResponse(HttpResponse response)
                                 throws ClientProtocolException, IOException {
                             StatusLine status = response.getStatusLine();
-                            TestUtils.Toast(mContext, TAG, "statusCode " + status.getStatusCode());
+                            MockUtils.Toast(mContext, TAG, "statusCode " + status.getStatusCode());
                             HttpEntity entity = response.getEntity();
                             byte[] body = null;
                             if (entity != null) {

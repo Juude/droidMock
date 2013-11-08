@@ -1,12 +1,12 @@
-package com.lewa.droidtest.test;
+package com.lewa.droidtest.mock;
 
 import android.content.Context;
 import android.os.Bundle;
 
-public abstract class Test {
+public abstract class Mocker {
     protected Context mContext;
     protected Bundle mExtras;
-    public Test (Context context, Bundle extras) {
+    public Mocker (Context context, Bundle extras) {
         mContext = context;
         mExtras = extras;
     }

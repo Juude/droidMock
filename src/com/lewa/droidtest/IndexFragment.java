@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.lewa.droidtest.test.TestReceiver;
+import com.lewa.droidtest.mock.MockReceiver;
 public class IndexFragment extends Fragment{
     private ListView mListView;
     private Activity mActivity;
@@ -64,7 +64,7 @@ public class IndexFragment extends Fragment{
                 for(String key : args.keySet()) {
                     i.putExtra(key, args.get(key));
                 }
-                TestReceiver receiver = new TestReceiver();
+                MockReceiver receiver = new MockReceiver();
                 receiver.invoke(mActivity, i);
             }
         });

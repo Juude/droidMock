@@ -4,11 +4,11 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.PowerManager;
 
-import com.lewa.droidtest.test.Test;
+import com.lewa.droidtest.mock.Mocker;
 /**
  * This requires android.permission.REBOOT
  * */
-public class PowerManagerTest extends Test{
+public class PowerManagerTest extends Mocker{
     private PowerManager mPm;
     public PowerManagerTest(Context context, Bundle extras) {
         super(context, extras);

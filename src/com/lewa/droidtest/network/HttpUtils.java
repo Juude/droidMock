@@ -5,7 +5,7 @@ import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.lewa.droidtest.test.TestUtils;
+import com.lewa.droidtest.mock.MockUtils;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -42,7 +42,7 @@ public class HttpUtils {
                         public Void handleResponse(HttpResponse response)
                                 throws ClientProtocolException, IOException {
                             StatusLine status = response.getStatusLine();
-                            TestUtils.Toast(context, TAG, "statusCode " + status.getStatusCode());
+                            MockUtils.Toast(context, TAG, "statusCode " + status.getStatusCode());
                             HttpEntity entity = response.getEntity();
                             byte[] body = null;
                             if (entity != null) {
@@ -72,7 +72,7 @@ public class HttpUtils {
             });
         }
         catch (IOException e) {
-            TestUtils.Toast(context, TAG, "error" + Log.getStackTraceString(e));
+            MockUtils.Toast(context, TAG, "error" + Log.getStackTraceString(e));
         }
         finally {
             httpClient.close();

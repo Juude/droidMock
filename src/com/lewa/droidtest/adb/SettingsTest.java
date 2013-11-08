@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 
-import com.lewa.droidtest.test.TestUtils;
+import com.lewa.droidtest.mock.MockUtils;
 
 public class SettingsTest {
     
@@ -32,7 +32,7 @@ public class SettingsTest {
     }
 
     public void test() {
-        String method = TestUtils.getString(null, "method", "setAdb");
+        String method = MockUtils.getString(null, "method", "setAdb");
         try {
             SettingsTest.class.getMethod(method).invoke(this);
         }

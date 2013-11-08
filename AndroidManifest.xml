@@ -94,7 +94,7 @@
             </intent-filter>
         </receiver>
         
-        <receiver android:name="com.lewa.droidtest.test.TestReceiver"
+        <receiver android:name="com.lewa.droidtest.mock.MockReceiver"
             android:enabled="true" >
             <intent-filter>
                 <action android:name="android.mock" >
@@ -120,7 +120,7 @@
         </receiver>
         
         <provider 
-            android:name=".provider.ProviderTest"
+            android:name=".provider.SampleProvider"
             android:authorities="com.lewa.droidtest">
         </provider>
         <receiver 

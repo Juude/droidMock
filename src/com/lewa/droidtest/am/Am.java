@@ -11,13 +11,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-import com.lewa.droidtest.test.Test;
-import com.lewa.droidtest.test.TestUtils;
+import com.lewa.droidtest.mock.Mocker;
+import com.lewa.droidtest.mock.MockUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-public class Am extends Test{
+public class Am extends Mocker{
     private PackageManager mPackageManager;
     public Am(Context context, Bundle extras) {
         super(context, extras);
@@ -30,7 +30,7 @@ public class Am extends Test{
     
     public void test() {
         try {
-            Am.class.getMethod(TestUtils.getString(mExtras, "method", "resolve")).invoke(this);
+            Am.class.getMethod(MockUtils.getString(mExtras, "method", "resolve")).invoke(this);
         }
         catch (Exception e) {
             Log.e(TAG, "", e);
@@ -40,15 +40,15 @@ public class Am extends Test{
     public void resolve() {
         Intent intent = new Intent(Intent.ACTION_MAIN, null);
         if(mExtras.containsKey("package")) {
-            String packageName = TestUtils.getString(mExtras, "package", "com.lewa.netmgr");
+            String packageName = MockUtils.getString(mExtras, "package", "com.lewa.netmgr");
             intent.setPackage(packageName);
         }
         if(mExtras.containsKey("action")) {
-            String action = TestUtils.getString(mExtras, "action", Intent.ACTION_MAIN);
+            String action = MockUtils.getString(mExtras, "action", Intent.ACTION_MAIN);
             intent.setAction(action);
         }
         if(mExtras.containsKey("category")) {
-            String category = TestUtils.getString(mExtras, "category", Intent.CATEGORY_LAUNCHER);
+            String category = MockUtils.getString(mExtras, "category", Intent.CATEGORY_LAUNCHER);
             intent.addCategory(category);
         }
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
@@ -72,7 +72,7 @@ public class Am extends Test{
     }
     
     public void startAll() {
-        int count = TestUtils.getInt(mExtras, "count", 15);
+        int count = MockUtils.getInt(mExtras, "count", 15);
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_LAUNCHER);
