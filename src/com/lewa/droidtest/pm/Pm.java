@@ -2,6 +2,7 @@ package com.lewa.droidtest.pm;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -33,6 +34,7 @@ public class Pm extends Mocker{
                         PackageManager.GET_RECEIVERS | 
                         PackageManager.GET_ACTIVITIES | 
                         PackageManager.GET_SERVICES);
+                ApplicationInfo appInfo = pkgInfo.applicationInfo;
                 
                 List<ResolveInfo> qReceivers = mPm.queryBroadcastReceivers(i, 0);
                 for(ResolveInfo receiver : qReceivers) {
@@ -49,6 +51,11 @@ public class Pm extends Mocker{
                     builder.append("service:$ " + " $x$"+ service.activityInfo + "\n");
                 }
                 
+                builder.append("installLocation : " + pkgInfo.installLocation);
+                builder.append("getLockedZipFilePath : " + pkgInfo.getLockedZipFilePath());
+                builder.append("sourcedir : " + appInfo.sourceDir);
+                builder.append("publicSourceDir : " + appInfo.publicSourceDir);
+
             }
             catch (NameNotFoundException e) {
                 e.printStackTrace();

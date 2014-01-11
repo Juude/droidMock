@@ -23,12 +23,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.lewa.droidtest.R;
 import com.lewa.droidtest.pm.Pm;
+
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import lewa.util.IconManager;
+
 public class AppFragment extends Fragment {
-    
     private static final String TAG = "AppFragment";
     final List<String> mPackages = new ArrayList<String>();
     private Activity mActivity;
@@ -43,6 +47,7 @@ public class AppFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         mActivity = getActivity();
+        IconManager.setEnableFancyDrawable(true);
         mPm = new Pm(mActivity, null);
         mPackageManager = mActivity.getPackageManager();
         mInflater = mActivity.getLayoutInflater();
@@ -183,9 +188,7 @@ public class AppFragment extends Fragment {
                 textTitle.setText(info.applicationInfo.loadLabel(mPackageManager)); 
                 
                 ImageView icon = (ImageView)v.findViewById(R.id.icon);
-                icon.setImageDrawable(info.applicationInfo.loadIcon(mPackageManager));
-                
-                
+                icon.setImageDrawable(info.applicationInfo.loadIcon(mPackageManager));                
             }
             else {
                 v.setVisibility(View.GONE);

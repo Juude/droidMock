@@ -16,12 +16,14 @@ import com.lewa.droidtest.mms.MmsSenderTest;
 import com.lewa.droidtest.mock.MockUtils.Mock;
 import com.lewa.droidtest.network.HttpClientTest;
 import com.lewa.droidtest.network.NetworkTest;
+import com.lewa.droidtest.notification.NotificationCloud;
+import com.lewa.droidtest.notification.NotificationMocker;
 import com.lewa.droidtest.pm.Pm;
 import com.lewa.droidtest.power.PowerManagerTest;
 import com.lewa.droidtest.provider.ProviderTest;
 import com.lewa.droidtest.am.Am;
 import com.lewa.droidtest.screen.ScreenTest;
-import com.lewa.droidtest.statusbar.StatusBarTest;
+import com.lewa.droidtest.statusbar.StatusBarManagerTest;
 
 import com.lewa.droidtest.telephony.TelephonyTest;
 
@@ -126,7 +128,7 @@ public class MockReceiver extends BroadcastReceiver{
     
     @Mock
     public void statusbar(Context context, Intent intent) {
-        Mocker test = new StatusBarTest(context, intent.getExtras());
+        Mocker test = new StatusBarManagerTest(context, intent.getExtras());
         test.test();
     }
     
@@ -145,6 +147,18 @@ public class MockReceiver extends BroadcastReceiver{
     @Mock
     public void provider(Context context, Intent intent) {
         Mocker test = new ProviderTest(context, intent.getExtras());
+        test.test();
+    }
+    
+    @Mock
+    public void notification(Context context, Intent intent) {
+        Mocker test = new NotificationMocker(context, intent.getExtras());
+        test.test();
+    }
+    
+    @Mock
+    public void notificationCloud(Context context, Intent intent) {
+        Mocker test = new NotificationCloud(context, intent.getExtras());
         test.test();
     }
 }

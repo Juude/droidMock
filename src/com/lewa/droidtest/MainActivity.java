@@ -10,11 +10,9 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemProperties;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
-import android.view.View;
-import android.view.View.OnKeyListener;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.SearchView;
@@ -27,7 +25,8 @@ import com.lewa.droidtest.lock.LockFragment;
 import com.lewa.droidtest.mms.sms.SmsSenderFragment;
 import com.lewa.droidtest.resources.ResourcesTest;
 import com.lewa.droidtest.screen.ScreenTest;
-import com.lewa.droidtest.statusbar.StatusBarTest;
+import com.lewa.droidtest.shortcuts.ShortcutsFragment;
+import com.lewa.droidtest.statusbar.StatusBarManagerTest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,16 +38,16 @@ public class MainActivity extends Activity {
     private static final Class<?>[] FRAGMENTS = {
             AppFragment.class,
             IndexFragment.class,
+            ShortcutsFragment.class,
             ResourcesTest.class,
             DataFragment.class,
             LockFragment.class,
             SettingsTest.class,
             ScreenTest.class,
             SmsSenderFragment.class,
-            StatusBarTest.class
+            StatusBarManagerTest.class
     };
     private static final String TAG = "MainActivity";
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
@@ -71,7 +70,7 @@ public class MainActivity extends Activity {
         });
         return super.onCreateOptionsMenu(menu);
     }
-    
+    public static int DEFAULT = SystemProperties.getInt("onCreateT", 0);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,8 +78,86 @@ public class MainActivity extends Activity {
         layout.setId(android.R.id.content);
         setContentView(layout);
         initActionBar();
+        try {
+            Thread.sleep(SystemProperties.getInt("onCreateT", DEFAULT));
+        }
+        catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
     
+    
+    
+    @Override
+    protected void onStart() {
+        // TODO Auto-generated method stub
+        super.onStart();
+        try {
+            Thread.sleep(SystemProperties.getInt("onStartT", DEFAULT));
+        }
+        catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        try {
+            Thread.sleep(SystemProperties.getInt("onResumeT", DEFAULT));
+        }
+        catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+    
+    
+
+    @Override
+    protected void onStop() {
+        // TODO Auto-generated method stub
+        super.onStop();
+        try {
+            Thread.sleep(SystemProperties.getInt("onStopT", DEFAULT));
+        }
+        catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        // TODO Auto-generated method stub
+        super.onDestroy();
+        try {
+            Thread.sleep(SystemProperties.getInt("onDestroyT", DEFAULT));
+        }
+        catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+    
+    
+
+    @Override
+    protected void onPause() {
+        // TODO Auto-generated method stub
+        super.onPause();
+        try {
+            Thread.sleep(SystemProperties.getInt("onPauseT", DEFAULT));
+        }
+        catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
     private void onSearch(String text) {
         
         Fragment currentFragment = mFragments.get(FRAGMENTS[getActionBar().getSelectedNavigationIndex()]);

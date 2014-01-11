@@ -27,6 +27,8 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> 
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR"/>
     
+    <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES"/>
+    
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"

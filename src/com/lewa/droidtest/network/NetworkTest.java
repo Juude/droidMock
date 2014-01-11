@@ -12,7 +12,7 @@ import com.lewa.droidtest.mock.MockUtils;
 
 public class NetworkTest extends Mocker{
 
-    private static final String TAG = "NetworkTest";
+    private static final String TAG = NetworkTest.class.getSimpleName();
 
     public NetworkTest(Context context, Bundle extras) {
         super(context, extras);
@@ -64,6 +64,5 @@ public class NetworkTest extends Mocker{
               cm.setWifiEnabled(cm.getWifiState() != WifiManager.WIFI_STATE_ENABLED);
         }
     }
-    
     
 }
