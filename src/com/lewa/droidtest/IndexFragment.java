@@ -29,7 +29,7 @@ public class IndexFragment extends Fragment{
         cmdWlan.put("a", "network");
         cmdWlan.put("wifi", "1");
         cmdWlan.put("method", "toggle");
-
+        
         mShortCuts.put("TOGGLE WLAN STATE", cmdWlan);
         
         HashMap<String, String> cmdMobile = new HashMap<String, String>();

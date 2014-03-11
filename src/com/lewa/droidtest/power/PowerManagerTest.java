@@ -21,7 +21,7 @@ public class PowerManagerTest extends Mocker{
     }
 
     @Override
-    public void test() {
+    public void dump() {
         reboot();
     }
     

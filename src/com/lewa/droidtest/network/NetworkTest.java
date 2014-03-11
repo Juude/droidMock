@@ -19,7 +19,7 @@ public class NetworkTest extends Mocker{
     }
 
     @Override
-    public void test() {
+    public void dump() {
         try {
             NetworkTest.class.getMethod(MockUtils.getString(mExtras, "method", "profile"))
             .invoke(this);

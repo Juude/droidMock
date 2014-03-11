@@ -14,5 +14,5 @@ public abstract class Mocker {
     public void setArgs(Bundle extras) {
         mExtras = extras;
     }
-    public abstract void test();
+    public abstract void dump();
 }

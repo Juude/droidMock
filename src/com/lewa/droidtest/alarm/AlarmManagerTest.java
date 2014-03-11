@@ -12,9 +12,14 @@ import android.os.ServiceManager;
 import android.util.Log;
 
 import com.lewa.droidtest.mock.MockUtils;
+import com.lewa.droidtest.mock.Mocker;
 
 
-public class AlarmManagerTest {
+public class AlarmManagerTest extends Mocker{
+    public AlarmManagerTest(Context context, Bundle extras) {
+        super(context, extras);
+    }
+
     private static final String TAG = "AlarmManagerTest";
     private BroadcastReceiver mReceiver;
     private long mDelay = 1000;
@@ -66,5 +71,11 @@ public class AlarmManagerTest {
     
     public void endTest(Context context) {
         context.getApplicationContext().unregisterReceiver(mReceiver);
+    }
+
+    @Override
+    public void dump() {
+        test(mContext, mExtras);
+        endTest(mContext);
     }
 }

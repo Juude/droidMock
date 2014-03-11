@@ -2,7 +2,6 @@
 package com.lewa.droidtest.screen;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -11,13 +10,14 @@ import android.view.Display;
 import android.view.WindowManager;
 
 import android.widget.Toast;
-public class ScreenTest {
+
+import com.lewa.droidtest.mock.Mocker;
+public class ScreenTest extends Mocker{
     public Context mContext;
     public Bundle mExtras;
     
-    public ScreenTest(Context context, Intent intent) {
-        mContext = context;
-        mExtras = intent.getExtras();
+    public ScreenTest(Context context, Bundle bundle) {
+        super(context, bundle);
     }
 
     public void getScreenSize() {
@@ -43,8 +43,8 @@ public class ScreenTest {
         Log.e("ScreenTest", info);
     }
    
-    
-    public void test() {
+    @Override
+    public void dump() {
         getScreenSize();
     }
 }

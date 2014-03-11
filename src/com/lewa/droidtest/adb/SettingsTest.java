@@ -7,13 +7,14 @@ import android.provider.Settings;
 import android.util.Log;
 
 import com.lewa.droidtest.mock.MockUtils;
+import com.lewa.droidtest.mock.Mocker;
 
-public class SettingsTest {
+public class SettingsTest extends Mocker{
     
     private static final String TAG = "SettingsTest";
     private Context mContext;
     public SettingsTest(Context context, Bundle bundles) {
-        mContext =  context;
+        super(context, bundles);
     }
     
     public void getAdb() {
@@ -39,5 +40,11 @@ public class SettingsTest {
         catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void dump() {
+        // TODO Auto-generated method stub
+        
     }
 }

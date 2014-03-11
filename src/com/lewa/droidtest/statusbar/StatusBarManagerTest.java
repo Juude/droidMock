@@ -23,7 +23,7 @@ public class StatusBarManagerTest extends Mocker{
     }
     
     
-    public void test() {
+    public void dump() {
         String method = MockUtils.getString(mExtras, "method", "toggle");
         try {
             StatusBarManagerTest.class.getMethod(method).invoke(this);

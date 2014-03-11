@@ -18,7 +18,7 @@ public class GpsTest extends Mocker{
     }
 
     @Override
-    public void test() {
+    public void dump() {
         try {
             GpsTest.class.getMethod(MockUtils.getString(mExtras, "method", "state"))
                 .invoke(this);

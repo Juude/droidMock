@@ -14,7 +14,7 @@ public class MmsSenderTest extends Mocker{
     }
 
     @Override
-    public void test() {
+    public void dump() {
         Intent mmsIntent = new Intent(mContext, MmsSenderService.class);
         mContext.startService(mmsIntent);  
     }

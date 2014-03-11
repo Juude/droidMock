@@ -73,6 +73,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.lewa.droidtest.CommonActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="com.lewa.droidtest.LayoutActivity"
             android:label="@string/app_name" >
             <intent-filter>

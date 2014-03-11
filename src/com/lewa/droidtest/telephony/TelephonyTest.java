@@ -16,7 +16,7 @@ public class TelephonyTest extends Mocker{
     }
 
     @Override
-    public void test() {
+    public void dump() {
         siminfo();
     }
     

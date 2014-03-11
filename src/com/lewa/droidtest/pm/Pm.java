@@ -2,6 +2,7 @@ package com.lewa.droidtest.pm;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -18,6 +19,7 @@ import java.util.List;
 public class Pm extends Mocker{
     private PackageManager mPm;
     private static final String TAG = "Pm";
+    
     public Pm(Context context, Bundle extras) {
         super(context, extras);
         mPm = mContext.getPackageManager();
@@ -38,6 +40,7 @@ public class Pm extends Mocker{
                 
                 List<ResolveInfo> qReceivers = mPm.queryBroadcastReceivers(i, 0);
                 for(ResolveInfo receiver : qReceivers) {
+                    
                     builder.append("receiver:$ " + " $x$"+ receiver.activityInfo + "\n");
                 }
                 
@@ -61,7 +64,7 @@ public class Pm extends Mocker{
                 e.printStackTrace();
             }
         }
-        Log.e(TAG, "string");
+        Log.e(TAG, "string" + builder.toString());
         return builder.toString();
     }
     
@@ -75,7 +78,18 @@ public class Pm extends Mocker{
             Log.e(TAG, "", new Throwable());
         }
     }
-    public void test() {
+    
+    public void broadcast() {
+        Log.d(TAG, "broadcast");
+        if(MockUtils.getInt(mExtras, "register", 0) == 1) {
+            
+            mContext.registerReceiver(new BroadcastReceiverTest(), new IntentFilter("HELLO"));
+        }
+        mContext.sendBroadcast(new Intent(mContext, BroadcastReceiverTest.class));
+    }
+    
+    @Override
+    public void dump() {
         String method = MockUtils.getString(mExtras, "method", "list");
         try {
             Pm.class.getMethod(method).invoke(this);

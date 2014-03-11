@@ -16,6 +16,7 @@ import android.os.RemoteException;
 import android.os.UserHandle;
 import android.util.Log;
 
+import com.lewa.droidtest.CommonActivity;
 import com.lewa.droidtest.mock.Mocker;
 import com.lewa.droidtest.mock.MockUtils;
 
@@ -70,8 +71,28 @@ public class Am extends Mocker{
         }
     }
     
+    public void anr() {
+        final int timeout = MockUtils.getInt(mExtras, "timeout", 20);
+        try {
+            for(int i = 0; i < timeout; i++) {
+                Log.e(TAG, "i is " + i);
+                Thread.sleep(1000);
+            }
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
     
-    public void test() {
+    public void anrFragment() {
+        Log.e(TAG, "anrFragment");
+        Intent i = new Intent(mContext, CommonActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        i.putExtra(CommonActivity.KEY_FRAGMENT, "com.lewa.droidtest.am.AnrFragment");
+        mContext.startActivity(i);
+    }
+    
+    public void dump() {
         try {
             Am.class.getMethod(MockUtils.getString(mExtras, "method", "resolve")).invoke(this);
         }

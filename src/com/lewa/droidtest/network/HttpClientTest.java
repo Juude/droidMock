@@ -29,7 +29,7 @@ public class HttpClientTest extends Mocker{
     }
 
     @Override
-    public void test() {
+    public void dump() {
         request();
     }
     

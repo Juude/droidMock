@@ -29,7 +29,7 @@ public class NotificationCloud extends Mocker{
     }
 
     @Override
-    public void test() {
+    public void dump() {
         fetchBlockList();
     }
 

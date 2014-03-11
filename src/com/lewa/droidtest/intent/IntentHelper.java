@@ -3,6 +3,7 @@ package com.lewa.droidtest.intent;
 import android.content.Intent;
 
 public class IntentHelper {
+    @SuppressWarnings("deprecation")
     public static String dump(Intent i) {
         StringBuilder builder = new StringBuilder();
         builder.append(i.toString());
