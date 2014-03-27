@@ -29,7 +29,7 @@ public class MockReceiver extends BroadcastReceiver{
         }
     }
     
-    private void invoke(Context context, Bundle bundle, String action) {
+    public void invoke(Context context, Bundle bundle, String action) {
         final String module = action;
         Class<? extends Mocker> clazz = Mocks.sModuleMap.get(module);    
         try {
@@ -44,6 +44,7 @@ public class MockReceiver extends BroadcastReceiver{
    
     
     public void invoke(Context context, Intent intent) {
+        Log.e(TAG, "xx" );
         try {
             final String action = MockUtils.getString(intent.getExtras(), "a", "ACTION!!");
             Log.e(TAG, "com.lewa.droidtest executing..." + action);

@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import lewa.util.IconManager;
+//import lewa.util.IconManager;
 
 public class AppFragment extends Fragment {
     private static final String TAG = "AppFragment";
@@ -45,7 +45,7 @@ public class AppFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         mActivity = getActivity();
-        IconManager.setEnableFancyDrawable(true);
+        //IconManager.setEnableFancyDrawable(true);
         mPm = new Pm(mActivity, null);
         mPackageManager = mActivity.getPackageManager();
         mInflater = mActivity.getLayoutInflater();

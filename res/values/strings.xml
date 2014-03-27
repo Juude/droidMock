@@ -13,6 +13,6 @@
     <string name="show_launchable">L</string>
     <string name="not_show_launchable">NL</string>
     
-
-    
+   <string name="twelve_hour_time_format_nopm">h:mm</string>
+   <string name="lewa_status_bar_date_formatter">%2$s\n%1$s %3$s</string>
 </resources>

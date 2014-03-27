@@ -19,6 +19,7 @@ import com.lewa.droidtest.power.PowerManagerTest;
 import com.lewa.droidtest.provider.ProviderTest;
 import com.lewa.droidtest.screen.ScreenTest;
 import com.lewa.droidtest.statusbar.StatusBarManagerTest;
+import com.lewa.droidtest.systemui.DateViewMocker;
 import com.lewa.droidtest.telephony.TelephonyTest;
 
 import java.lang.reflect.Constructor;
@@ -65,7 +66,8 @@ public class Mocks {
         sModuleMap.put("Pm", Pm.class);
         sModuleMap.put("AlarmPersist", AlarmPersist.class);
         
-        
+        sModuleMap.put("dateView", DateViewMocker.class);
+
     }
     
     

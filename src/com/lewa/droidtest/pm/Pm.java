@@ -24,6 +24,7 @@ public class Pm extends Mocker{
         super(context, extras);
         mPm = mContext.getPackageManager();
     }
+    
     public String list() {
         StringBuilder builder = new StringBuilder();
         String packageName = mExtras.getString("package");
@@ -82,7 +83,6 @@ public class Pm extends Mocker{
     public void broadcast() {
         Log.d(TAG, "broadcast");
         if(MockUtils.getInt(mExtras, "register", 0) == 1) {
-            
             mContext.registerReceiver(new BroadcastReceiverTest(), new IntentFilter("HELLO"));
         }
         mContext.sendBroadcast(new Intent(mContext, BroadcastReceiverTest.class));

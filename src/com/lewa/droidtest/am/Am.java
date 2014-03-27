@@ -34,7 +34,7 @@ public class Am extends Mocker{
     private static Context sContext;
     private final static String TAG = "Am";
     
-    public void kill() {
+    public void forceStop() {
         final String pkgName  = MockUtils.getString(mExtras, "package", "com.lewa.weather");
         try {
             mAm.forceStopPackage(pkgName, UserHandle.myUserId());
@@ -63,7 +63,9 @@ public class Am extends Mocker{
     
     public void killBackground() {
         final String pkgName  = MockUtils.getString(mExtras, "package", "com.lewa.weather");
+        Log.e(TAG, "killing " + pkgName);
         try {
+            Log.e(TAG, "killing " + pkgName);
             mAm.killBackgroundProcesses(pkgName, UserHandle.myUserId());
         }
         catch (RemoteException e) {

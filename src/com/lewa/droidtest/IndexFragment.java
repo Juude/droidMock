@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import java.util.List;
 
 import com.lewa.droidtest.mock.MockReceiver;
 public class IndexFragment extends Fragment{
+    protected static final String TAG = "IndexFragment";
     private ListView mListView;
     private Activity mActivity;
     private HashMap<String, HashMap<String, String>>  mShortCuts = new HashMap<String, HashMap<String, String>>();
@@ -42,6 +44,11 @@ public class IndexFragment extends Fragment{
         HashMap<String, String> testNetwork = new HashMap<String, String>();
         testNetwork.put("a", "network");
         mShortCuts.put("TEST NETWORK", testNetwork);
+        
+        HashMap<String, String> notification = new HashMap<String, String>();
+        notification.put("a", "notification");
+        mShortCuts.put("Send Notification", notification);
+        
         super.onCreate(savedInstanceState);
     }
 
@@ -61,11 +68,15 @@ public class IndexFragment extends Fragment{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent();
                 HashMap<String, String> args = mShortCuts.get(items.get(position));
+                Log.e(TAG, "args : " + args);
                 for(String key : args.keySet()) {
                     i.putExtra(key, args.get(key));
                 }
+                Log.e(TAG, "1");
                 MockReceiver receiver = new MockReceiver();
-                receiver.invoke(mActivity, i);
+                Log.e(TAG, "2");
+
+                receiver.invoke(mActivity, i.getExtras(), args.get("a"));
             }
         });
         return mListView;        
