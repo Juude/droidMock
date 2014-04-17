@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lewa.droidtest"
+    package="com.juuda.droidmock"
     android:versionCode="1"
     android:versionName="1.0" >
-
     <uses-sdk
-        android:minSdkVersion="15"
-        android:targetSdkVersion="17" />
+        android:minSdkVersion="17"
+        android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -27,9 +26,8 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> 
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR"/>
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
-    
     <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES"/>
-    
+     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -40,7 +38,7 @@
             android:name="android.app.default_searchable"
             android:value=".MainActivity" />
         <activity
-            android:name="com.lewa.droidtest.MainActivity"
+            android:name="com.juuda.droidmock.MainActivity"
             android:launchMode="singleTask"
             android:label="@string/app_name" >
             <intent-filter>
@@ -56,7 +54,7 @@
              android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name="com.lewa.droidtest.lock.LockActivity"
+            android:name="com.juuda.droidmock.lock.LockActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="stateVisible"
             android:clearTaskOnLaunch="true" >
@@ -67,44 +65,44 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.lewa.droidtest.lock.TopmostActivity"
+            android:name="com.juuda.droidmock.lock.TopmostActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.lewa.droidtest.CommonActivity"
+            android:name="com.juuda.droidmock.CommonActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.lewa.droidtest.LayoutActivity"
+            android:name="com.juuda.droidmock.LayoutActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
-        <service android:name="com.lewa.droidtest.mms.MmsSenderService" />
+        <service android:name="com.juuda.droidmock.mms.MmsSenderService" />
 
-        <receiver android:name="com.lewa.droidtest.mms.sms.SentIntentReceiver" >
+        <receiver android:name="com.juuda.droidmock.mms.sms.SentIntentReceiver" >
         </receiver>
-        <receiver android:name="com.lewa.droidtest.mms.sms.DeliveryIntentReceiver" />
+        <receiver android:name="com.juuda.droidmock.mms.sms.DeliveryIntentReceiver" />
 
-        <service android:name="com.lewa.droidtest.lock.LockDialogService" >
+        <service android:name="com.juuda.droidmock.lock.LockDialogService" >
         </service>
 
-        <receiver android:name="com.lewa.droidtest.am.Am" >
+        <receiver android:name="com.juuda.droidmock.am.Am" >
             <intent-filter>
                 <action android:name="droidTest.am" >
                 </action>
             </intent-filter>
         </receiver>
         
-        <receiver android:name="com.lewa.droidtest.mock.MockReceiver"
+        <receiver android:name="com.juuda.droidmock.mock.MockReceiver"
             android:enabled="true" >
             <intent-filter>
                 <action android:name="android.mock" >
@@ -112,7 +110,7 @@
             </intent-filter>
         </receiver>
         
-        <receiver android:name="com.lewa.droidtest.alarm.AlarmReceiver"
+        <receiver android:name="com.juuda.droidmock.alarm.AlarmReceiver"
             android:enabled="true" >
             <intent-filter>
                 <action android:name="com.android.deskclock.ALARM_ALERT" >
@@ -120,7 +118,7 @@
             </intent-filter>
         </receiver>
         
-        <receiver android:name="com.lewa.droidtest.pm.PackageChangeReceiver" >
+        <receiver android:name="com.juuda.droidmock.pm.PackageChangeReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_CHANGED" >
                 </action>
