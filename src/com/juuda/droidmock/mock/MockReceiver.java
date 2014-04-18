@@ -14,14 +14,15 @@ import com.juuda.droidmock.mock.MockUtils.Mock;
 
 
 public class MockReceiver extends BroadcastReceiver{
-    private static final String TAG = "TestReceiver";
-
+    private static final String TAG = "MockReceiver";
+    public static final boolean DEBUG = true;
+    
     @Override
     public void onReceive(Context context, Intent intent) {
         try {
             final Bundle bundle = intent.getExtras();
             final String action = MockUtils.getString(bundle, "a", "ACTION!!");
-            Log.d(TAG, "executing..." + action + "in " + context.getPackageName());
+            if(DEBUG)Log.d(TAG, "executing..." + action + "in " + context.getPackageName());
             invoke(context, bundle, action);
         }
         catch (Exception e) {
@@ -44,10 +45,8 @@ public class MockReceiver extends BroadcastReceiver{
    
     
     public void invoke(Context context, Intent intent) {
-        Log.e(TAG, "xx" );
         try {
             final String action = MockUtils.getString(intent.getExtras(), "a", "ACTION!!");
-            Log.e(TAG, "com.lewa.droidtest executing..." + action);
             Method actionMethod =  getClass().getMethod(action, Context.class, Intent.class);
             if(actionMethod.getAnnotation(MockUtils.Mock.class) != null) {
                 actionMethod.invoke(this, context,intent);

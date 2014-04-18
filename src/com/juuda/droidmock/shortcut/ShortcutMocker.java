@@ -26,6 +26,7 @@ public class ShortcutMocker extends Mocker{
         intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, 
                 Intent.ShortcutIconResource.fromContext(mContext.getApplicationContext(), R.drawable.ic_launcher));
         intent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+        
         mContext.getApplicationContext().sendBroadcast(intent);
 
     }
