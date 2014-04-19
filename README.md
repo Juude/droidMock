@@ -25,7 +25,7 @@ https://www.dropbox.com/s/8ekgxg1r8h4ho7n/droidTest.apk
 13. mock.py Pm start package=packageName : start launcher application of packageName
 14. mock.py Pm list package=packageName: list general information of a package
 15. mock.py shortcut : create a shortcut of a application
-16. 
+16. mock.py telehphony : get inserted simcard size
 
 ###How to use 
 1. add the mock.py file to PATH
