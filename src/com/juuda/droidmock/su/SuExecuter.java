@@ -45,9 +45,9 @@ public class SuExecuter {
                 process = Runtime.getRuntime().exec(command);
             }
             ret.result = Streams.readFully(new InputStreamReader(process.getInputStream(),
-                    Charsets.UTF_8));
+                    "UTF-8"));
             ret.error = Streams.readFully(new InputStreamReader(process.getErrorStream(),
-                    Charsets.UTF_8));
+            		"UTF-8"));
             ret.success = process.waitFor() == 0;
         }
         catch (Exception e) {

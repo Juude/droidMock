@@ -11,11 +11,6 @@ import com.juuda.droidmock.mock.Mocker;
 import com.juuda.droidmock.su.SuExecuter;
 import com.juuda.droidmock.su.SuExecuter.CommandResult;
 
-import java.io.DataOutputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.Charsets;
-
-import libcore.io.Streams;
 
 public class SettingsMocker extends Mocker{
     private static final String TAG = "SettingsMocker";

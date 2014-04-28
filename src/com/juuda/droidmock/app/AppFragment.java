@@ -75,10 +75,10 @@ public class AppFragment extends Fragment {
             case android.R.id.home:
                 onSearch(null);
                 break;
-            case R.id.showLaunchable:
-                mShowLaunch = !mShowLaunch;
-                onSearch(mSearchingText);
-                break;
+//            case R.id.showLaunchable:
+//                mShowLaunch = !mShowLaunch;
+//                onSearch(mSearchingText);
+//                break;
         }
         return super.onOptionsItemSelected(item);
     }

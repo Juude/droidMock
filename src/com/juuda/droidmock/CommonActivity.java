@@ -8,7 +8,6 @@ import android.widget.FrameLayout;
 
 
 public class CommonActivity extends Activity {
-
     public static final String KEY_FRAGMENT = "fragment";
 
     @Override

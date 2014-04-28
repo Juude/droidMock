@@ -7,7 +7,6 @@ import com.juuda.droidmock.alarm.AlarmManagerTest;
 import com.juuda.droidmock.alarm.AlarmPersist;
 import com.juuda.droidmock.am.Am;
 import com.juuda.droidmock.gps.GpsTest;
-import com.juuda.droidmock.mms.MmsSenderTest;
 import com.juuda.droidmock.mock.Mocks;
 import com.juuda.droidmock.network.HttpClientTest;
 import com.juuda.droidmock.network.NetworkTest;
@@ -20,7 +19,6 @@ import com.juuda.droidmock.screen.ScreenTest;
 import com.juuda.droidmock.shortcut.ShortcutMocker;
 import com.juuda.droidmock.statusbar.StatusBarManagerTest;
 import com.juuda.droidmock.su.SuMocker;
-import com.juuda.droidmock.systemui.DateViewMocker;
 import com.juuda.droidmock.telephony.TelephonyTest;
 
 public class DroidMocksApplication extends Application{
@@ -37,7 +35,6 @@ public class DroidMocksApplication extends Application{
         
         Mocks.sModuleMap.put("statusbar", StatusBarManagerTest.class);
         Mocks.sModuleMap.put("network", NetworkTest.class);
-        Mocks.sModuleMap.put("mms", MmsSenderTest.class);
         Mocks.sModuleMap.put("http", HttpClientTest.class);
         
         
@@ -50,7 +47,6 @@ public class DroidMocksApplication extends Application{
         Mocks. sModuleMap.put("Pm", Pm.class);
         Mocks. sModuleMap.put("AlarmPersist", AlarmPersist.class);
         
-        Mocks.sModuleMap.put("dateView", DateViewMocker.class);
         Mocks.sModuleMap.put("shortcut", ShortcutMocker.class);
         
         Mocks.sModuleMap.put("su", SuMocker.class);

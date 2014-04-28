@@ -2,7 +2,7 @@ package com.juuda.droidmock.telephony;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.provider.Telephony.SIMInfo;
+//import android.provider.Telephony.SIMInfo;
 import android.util.Log;
 
 import com.juuda.droidmock.mock.Mocker;
@@ -21,7 +21,7 @@ public class TelephonyTest extends Mocker{
     }
     
     public void siminfo() {
-        Log.e(TAG, "insertedSize: "  + SIMInfo.getInsertedSIMList(mContext).size());
+        //Log.e(TAG, "insertedSize: "  + SIMInfo.getInsertedSIMList(mContext).size());
     }
     
 }
