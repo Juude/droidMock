@@ -1,6 +1,7 @@
 package com.juuda.droidmock;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.juuda.droidmock.adb.SettingsMocker;
 import com.juuda.droidmock.alarm.AlarmManagerTest;
@@ -23,7 +24,9 @@ import com.juuda.droidmock.telephony.TelephonyTest;
 
 public class DroidMocksApplication extends Application{
 
-    @Override
+    private static final String TAG = "DroidMocksApplication";
+
+	@Override
     public void onCreate() {
         super.onCreate();
         Mocks.sModuleMap.put("alarmManagerTest", AlarmManagerTest.class);
@@ -50,6 +53,7 @@ public class DroidMocksApplication extends Application{
         Mocks.sModuleMap.put("shortcut", ShortcutMocker.class);
         
         Mocks.sModuleMap.put("su", SuMocker.class);
+        Log.d(TAG, "onCreate");
     }
 
 }
