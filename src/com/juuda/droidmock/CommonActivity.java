@@ -44,6 +44,7 @@ public class CommonActivity extends Activity {
     @Override
     public void onBackPressed() {
         finish();
+//        int a = com.android.systemui.R.string
         super.onBackPressed();
     }
 }

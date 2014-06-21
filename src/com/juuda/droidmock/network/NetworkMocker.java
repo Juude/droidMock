@@ -10,18 +10,18 @@ import android.util.Log;
 import com.juuda.droidmock.mock.MockUtils;
 import com.juuda.droidmock.mock.Mocker;
 
-public class NetworkTest extends Mocker{
+public class NetworkMocker extends Mocker{
 
-    private static final String TAG = NetworkTest.class.getSimpleName();
+    private static final String TAG = NetworkMocker.class.getSimpleName();
 
-    public NetworkTest(Context context, Bundle extras) {
+    public NetworkMocker(Context context, Bundle extras) {
         super(context, extras);
     }
 
     @Override
     public void dump() {
         try {
-            NetworkTest.class.getMethod(MockUtils.getString(mExtras, "method", "profile"))
+            NetworkMocker.class.getMethod(MockUtils.getString(mExtras, "method", "profile"))
             .invoke(this);
         }
         catch (Exception e) {
@@ -44,6 +44,7 @@ public class NetworkTest extends Mocker{
     }
     
     private String dumpInfo(NetworkInfo info) {
+        //info.
         if(info == null) {
             return null;
         }

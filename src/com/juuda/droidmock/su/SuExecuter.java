@@ -1,9 +1,8 @@
 
 package com.juuda.droidmock.su;
 
+import android.os.SystemProperties;
 import android.util.Log;
-
-import java.nio.charset.Charsets;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 
@@ -13,7 +12,7 @@ import libcore.io.Streams;
 import java.lang.Process;
 
 public class SuExecuter {
-    private static final String CONFIG_SU_BINARY = "su";
+    private static final String CONFIG_SU_BINARY = SystemProperties.get("suname", "su");
     private static final String TAG = "SuExecuter";
 
     public static class CommandResult {
@@ -32,7 +31,7 @@ public class SuExecuter {
         Process process = null;
         DataOutputStream os = null;
         CommandResult ret = new CommandResult();
-        Log.d(TAG, "running " + command);
+        Log.d(TAG, "running " + command + "@@ su is " + CONFIG_SU_BINARY);
         try {
             if (root) {
                 process = Runtime.getRuntime().exec(CONFIG_SU_BINARY);

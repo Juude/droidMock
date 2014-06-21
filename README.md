@@ -27,7 +27,24 @@ https://www.dropbox.com/s/8ekgxg1r8h4ho7n/droidTest.apk
 15. mock.py shortcut : create a shortcut of a application
 16. mock.py telehphony : get inserted simcard size
 
-###How to use 
+###How to..
+####set up the framework
+1. add droidMocks.jar to libs
+2. add this 
+        <receiver android:name="com.juuda.droidmock.mock.MockReceiver" >
+            <intent-filter>
+                <action android:name="android.mock" />
+            </intent-filter>
+        </receiver>
+    to AndroidManifest.xml
+3. add application instance in <application> tag,such as DemoDroidMocksApplication 
+4. in the Application's onCreate, put : 
+
+####add mocks
+1. write a class that extends Mocker
+2. do what you want in dump() 
+
+####use mock.py 
 1. add the mock.py file to PATH
 2. useage: mock.py [module] [key=value] [key1=value2] .... 
 
