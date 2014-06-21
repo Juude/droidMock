@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">droidTest2</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">droidMock</string>
     <string name="menu_settings">Settings</string>
  	<string name="test_long">d</string>
  	<string name="linked_text"><u>This is linked</u></string>

@@ -22,10 +22,10 @@ import com.juuda.droidmock.R;
 import com.juuda.droidmock.adb.SettingsMocker;
 import com.juuda.droidmock.app.AppFragment;
 import com.juuda.droidmock.data.DataFragment;
+import com.juuda.droidmock.display.DisplayMocker;
 import com.juuda.droidmock.lock.LockFragment;
 import com.juuda.droidmock.mms.sms.SmsSenderFragment;
 import com.juuda.droidmock.resources.ResourcesTest;
-import com.juuda.droidmock.screen.ScreenTest;
 import com.juuda.droidmock.shortcuts.ShortcutsFragment;
 import com.juuda.droidmock.statusbar.StatusBarManagerTest;
 
@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
             DataFragment.class,
             LockFragment.class,
             SettingsMocker.class,
-            ScreenTest.class,
+            DisplayMocker.class,
             SmsSenderFragment.class,
             StatusBarManagerTest.class
     };

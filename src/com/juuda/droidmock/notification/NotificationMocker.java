@@ -6,13 +6,18 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.RemoteViews;
 
 import com.juuda.droidmock.R;
+import com.juuda.droidmock.mock.MockUtils;
 import com.juuda.droidmock.mock.Mocker;
 
 import java.util.Random;
 
 public class NotificationMocker extends Mocker{
+
+    private static final String TAG = "NotificationMocker";
 
     public NotificationMocker(Context context, Bundle extras) {
         super(context, extras);
@@ -20,7 +25,11 @@ public class NotificationMocker extends Mocker{
 
     @Override
     public void dump() {
-        notification();
+        try {
+            NotificationMocker.class.getMethod(MockUtils.getString(mExtras, "method", "notification")).invoke(this);
+        } catch (Exception e) {
+            Log.e(TAG, "", e);
+        }
     }
     private NotificationManager getNotificationManager() {
         return (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -40,6 +49,22 @@ public class NotificationMocker extends Mocker{
         n.setLatestEventInfo(mContext, label,
                 "what is this", broadcast);
         n.flags |= Notification.FLAG_AUTO_CANCEL;
+        n.flags |= Notification.FLAG_SHOW_LIGHTS;
+        n.ledARGB = 0xFFFF0000;
+        n.ledOnMS = 1000;
+        n.ledOffMS = 500;
+        
+        nm.notify(notifyId, n);
+    }
+    
+    public void notificationX() {
+        Log.d(TAG, "notificationX");
+        int notifyId = new Random().nextInt(Integer.MAX_VALUE);
+        NotificationManager nm = getNotificationManager();
+        Notification n = new Notification.Builder(mContext)
+            .setContent(new RemoteViews(mContext.getPackageName(), R.layout.custom_notification))
+            .setSmallIcon(R.drawable.ic_launcher)
+            .build();
         nm.notify(notifyId, n);
     }
 

@@ -2,6 +2,7 @@ package com.juuda.droidmock.alarm;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 
 import com.juuda.droidmock.mock.Mocker;

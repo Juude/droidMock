@@ -8,7 +8,6 @@ import android.widget.FrameLayout;
 
 
 public class CommonActivity extends Activity {
-
     public static final String KEY_FRAGMENT = "fragment";
 
     @Override
@@ -45,6 +44,7 @@ public class CommonActivity extends Activity {
     @Override
     public void onBackPressed() {
         finish();
+//        int a = com.android.systemui.R.string
         super.onBackPressed();
     }
 }

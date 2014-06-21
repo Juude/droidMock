@@ -10,7 +10,7 @@ public abstract class Mocker {
         mContext = context;
         mExtras = extras;
     }
-    
+        
     public void setArgs(Bundle extras) {
         mExtras = extras;
     }

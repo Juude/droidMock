@@ -1,21 +1,23 @@
 
-package com.juuda.droidmock.screen;
+package com.juuda.droidmock.display;
 
 import android.content.Context;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
+import android.view.WindowManagerGlobal;
 import android.widget.Toast;
 
 import com.juuda.droidmock.mock.Mocker;
-public class ScreenTest extends Mocker{
-    public Context mContext;
-    public Bundle mExtras;
-    
-    public ScreenTest(Context context, Bundle bundle) {
+
+/*alias display*/
+public class DisplayMocker extends Mocker{
+
+    public DisplayMocker(Context context, Bundle bundle) {
         super(context, bundle);
     }
 
@@ -28,11 +30,17 @@ public class ScreenTest extends Mocker{
         display.getSize(size);
         Point realSize = new Point();
         display.getRealSize(realSize);
+        boolean hasNavigationBar = false;
+        try {
+            hasNavigationBar = WindowManagerGlobal.getWindowManagerService().hasNavigationBar();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
         
         String info = "realwidth : " + realSize.x + "realHeight: " + realSize.y + 
                 "width : " + size.x + "height" + size.y +
                 "density: " + outMetrics.density + "densityDpi" + outMetrics.densityDpi
-                + "scaledDensity " + outMetrics.scaledDensity;
+                + "scaledDensity " + outMetrics.scaledDensity + "\nhas NavigationBar : " + hasNavigationBar;
         
         Toast.makeText(mContext,
                 info,
