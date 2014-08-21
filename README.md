@@ -8,7 +8,7 @@ androidMock
 https://raw.githubusercontent.com/Juude/droidMock/master/release/droidMock.apk
 
 
-<a href="https://www.the-qrcode-generator.com/"><img src="http://chart.apis.google.com/chart?chs=200x200&amp;cht=qr&amp;chld=|1&amp;chl=https%3A%2F%2Fwww.dropbox.com%2Fs%2F8ekgxg1r8h4ho7n%2FdroidTest.apk" alt="QR Code" /></a>
+<img src="http://qrfree.kaywa.com/?l=1&s=8&d=https%3A%2F%2Fraw.githubusercontent.com%2FJuude%2FdroidMock%2Fmaster%2Frelease%2FdroidMock.apk" alt="QRCode"/>
 
 ###Functions
 1. build a framework for building apps that can access and modify state of applications
