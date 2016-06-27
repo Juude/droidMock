@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    android:orientation="vertical"
+    >
+    <!--  -->
+	<ImageView
+	    android:id="@+id/lock"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         />
+    
+	<LinearLayout
+	   android:orientation="vertical"
+	   android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+	   android:id="@+id/divider"
+/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10">
+    </EditText>
+    
+    <TextView
+        android:id="@+id/passwordHintDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+    
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </CheckBox>   
+    
+ />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonOk"
+        android:text="close" />
+   
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonShowKeyboard"
+        android:text="showKeyboard" />
+    
+</LinearLayout>

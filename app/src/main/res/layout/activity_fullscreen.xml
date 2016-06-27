@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+	<org.vevolute.animation.MemoryCleanerView
+	    android:id="@+id/memoryCleaner"
+	    android:layout_width="match_parent"
+	    android:layout_height="200dp"
+	  	android:gravity="center"
+	    android:background="#000">
+	</org.vevolute.animation.MemoryCleanerView>
+	
+	
+	<Button
+	  	android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/buttonRed"
+	    android:background="#FF0000"
+	    android:onClick="changeColor"
+	    android:layout_marginTop="100dp"
+	    android:layout_below="@id/memoryCleaner"
+	    >
+	</Button>
+	
+	<Button
+	  	android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/buttonYellow"
+	    android:background="#FFFF00"
+	    android:onClick="changeColor"
+	    android:layout_marginTop="100dp"
+	    android:layout_toRightOf="@id/buttonRed"
+	    android:layout_below="@id/memoryCleaner"
+	    >
+	</Button>
+	
+		
+	<Button
+	  	android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/buttonGreen"
+	    android:background="#00FF00"
+	    android:layout_marginTop="100dp"
+	    android:layout_toRightOf="@id/buttonYellow"
+	    android:layout_below="@id/memoryCleaner"
+	    >
+	</Button>		
+	
+	<Button
+	    android:layout_marginLeft="50dp"
+	  	android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/buttonReset"
+	    android:text="reset"
+	    android:layout_marginTop="100dp"
+	    android:layout_toRightOf="@id/buttonGreen"
+	    android:layout_below="@id/memoryCleaner"
+	    >
+	</Button>	
+</RelativeLayout>

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.juuda.droidmock">
+    package="com.juuda.droidmock"
+    android:versionCode="4"
+    android:versionName="1.0"
+    >
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -83,8 +89,6 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.juuda.droidmock.mms.MmsSenderService" />
-
         <receiver android:name="com.juuda.droidmock.mms.sms.SentIntentReceiver" >
         </receiver>
         <receiver android:name="com.juuda.droidmock.mms.sms.DeliveryIntentReceiver" />
@@ -92,13 +96,6 @@
         <service android:name="com.juuda.droidmock.lock.LockDialogService" >
         </service>
 
-        <receiver android:name="com.juuda.droidmock.am.Am">
-            <intent-filter>
-                <action android:name="droidTest.am" >
-                </action>
-            </intent-filter>
-        </receiver>
-        
         <receiver android:name="com.juuda.droidmock.mock.MockReceiver"
             android:enabled="true" >
             <intent-filter>
@@ -119,25 +116,9 @@
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_CHANGED" >
                 </action>
-
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
-        
-        <provider 
-            android:name=".provider.SampleProvider"
-            android:authorities="com.lewa.droidtest">
-        </provider>
-        <receiver 
-            android:name=".provider.ProviderTestReceiver">
-            <intent-filter >
-                <action android:name="droidtest."/>
-            </intent-filter>
-        </receiver>
-        
-        <service 
-            android:name=".ToastService">
-        </service>
     </application>
 
 </manifest>

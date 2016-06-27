@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="time_0_3">深夜</string>
+    <string name="time_4_6">凌晨</string>
+    <string name="time_7_9">造成</string>
+    <string name="time_10_11">上午</string>
+    <string name="time_12">中午</string>
+    <string name="time_13_16">下午</string>
+    <string name="time_17_18">傍晚</string>
+    <string name="time_19_23">晚上</string>                
+</resources>
