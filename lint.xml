@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<lint>
-    <issue id="ContentDescription" severity="ignore" />
-    <issue id="NewApi" severity="ignore" />
-    <issue id="ProtectedPermissions" severity="ignore" />
-    <issue id="ProtectedPermissons">
-        <ignore path="AndroidManifest.xml" />
-    </issue>
-</lint>

@@ -10,6 +10,7 @@ import com.facebook.stetho.inspector.protocol.ChromeDevtoolsDomain;
 import com.facebook.stetho.rhino.JsRuntimeReplFactoryBuilder;
 import com.juude.droidmocks.alarm.AlarmPlugin;
 import com.juude.droidmocks.display.DisplayPlugin;
+import com.juude.droidmocks.power.PowerManagerMocker;
 import com.juude.droidmocks.sdcard.SdcardPlugin;
 
 import java.util.ArrayList;
@@ -49,5 +50,6 @@ public class StethoWrapper {
         sDumperList.add(new AlarmPlugin(application));
         sDumperList.add(new SdcardPlugin());
         sDumperList.add(new DisplayPlugin(application));
+        sDumperList.add(new PowerManagerMocker(application));
     }
 }

@@ -24,7 +24,6 @@ import com.juude.droidmocks.data.DataFragment;
 import com.juude.droidmocks.display.DisplayPlugin;
 import com.juude.droidmocks.lock.LockFragment;
 import com.juude.droidmocks.sms.SmsSenderFragment;
-import com.juude.droidmocks.shortcut.ShortcutsFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,12 +31,11 @@ import java.util.HashMap;
 public class MainActivity extends Activity {
 
     private static final int DEFAULT = 0;
-    private HashMap<Class<?>, Fragment> mFragments = new HashMap<Class<?>, Fragment>();
+    private HashMap<Class<?>, Fragment> mFragments = new HashMap<>();
 
     private static final Class<?>[] FRAGMENTS = {
             AppFragment.class,
             IndexFragment.class,
-            ShortcutsFragment.class,
             DataFragment.class,
             LockFragment.class,
             SettingsMocker.class,
