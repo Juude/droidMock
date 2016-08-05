@@ -32,7 +32,7 @@ https://raw.githubusercontent.com/Juude/droidMock/master/release/droidMock.apk
 ####set up the framework
 1. add droidMocks.jar to libs
 2. add this 
-        <receiver android:name="com.juuda.droidmock.mock.MockReceiver" >
+        <receiver android:name="com.juude.droidmocks.mock.MockReceiver" >
             <intent-filter>
                 <action android:name="android.mock" />
             </intent-filter>

@@ -35,13 +35,13 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
-        android:name="com.juuda.droidmock.DroidMocksApplication" >
+        android:name="com.juude.droidmocks.DroidMocksApplication" >
         
         <meta-data
             android:name="android.app.default_searchable"
             android:value=".MainActivity" />
         <activity
-            android:name="com.juuda.droidmock.MainActivity"
+            android:name="com.juude.droidmocks.MainActivity"
             android:launchMode="singleTask"
             android:label="@string/app_name" >
             <intent-filter>
@@ -57,7 +57,7 @@
              android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name="com.juuda.droidmock.lock.LockActivity"
+            android:name="com.juude.droidmocks.lock.LockActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="stateVisible"
             android:clearTaskOnLaunch="true" >
@@ -68,35 +68,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.juuda.droidmock.lock.TopmostActivity"
+            android:name="com.juude.droidmocks.lock.TopmostActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.juuda.droidmock.CommonActivity"
+            android:name="com.juude.droidmocks.CommonActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.juuda.droidmock.LayoutActivity"
+            android:name="com.juude.droidmocks.LayoutActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
-        <receiver android:name="com.juuda.droidmock.mms.sms.SentIntentReceiver" >
+        <receiver android:name="com.juude.droidmocks.sms.SentIntentReceiver" >
         </receiver>
-        <receiver android:name="com.juuda.droidmock.mms.sms.DeliveryIntentReceiver" />
+        <receiver android:name="com.juude.droidmocks.sms.DeliveryIntentReceiver" />
 
-        <service android:name="com.juuda.droidmock.lock.LockDialogService" >
+        <service android:name="com.juude.droidmocks.lock.LockDialogService" >
         </service>
 
-        <receiver android:name="com.juuda.droidmock.mock.MockReceiver"
+        <receiver android:name="com.juude.droidmocks.mock.MockReceiver"
             android:enabled="true" >
             <intent-filter>
                 <action android:name="android.mock" >
@@ -104,7 +104,7 @@
             </intent-filter>
         </receiver>
         
-        <receiver android:name="com.juuda.droidmock.alarm.AlarmReceiver"
+        <receiver android:name="com.juude.droidmocks.alarm.AlarmReceiver"
             android:enabled="true" >
             <intent-filter>
                 <action android:name="com.android.deskclock.ALARM_ALERT" >
@@ -112,7 +112,7 @@
             </intent-filter>
         </receiver>
         
-        <receiver android:name="com.juuda.droidmock.pm.PackageChangeReceiver" >
+        <receiver android:name="com.juude.droidmocks.pm.PackageChangeReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_CHANGED" >
                 </action>
