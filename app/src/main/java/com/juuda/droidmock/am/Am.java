@@ -1,7 +1,6 @@
 
 package com.juuda.droidmock.am;
 
-import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +9,6 @@ import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.RemoteException;
-import android.os.UserHandle;
 import android.util.Log;
 
 import com.juuda.droidmock.CommonActivity;
@@ -30,8 +27,6 @@ public class Am extends Mocker{
     private static Context sContext;
     private final static String TAG = "Am";
 
-
-    
     public void anr() {
         final int timeout = MockUtils.getInt(mExtras, "timeout", 20);
         try {
