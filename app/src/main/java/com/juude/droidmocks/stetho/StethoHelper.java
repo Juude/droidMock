@@ -44,4 +44,12 @@ public class StethoHelper {
         String[] arguments = getArgumentsOrNull(dumpContext);
         return arguments == null ||  commandLine.hasOption("dump");
     }
+
+    public static String getString(CommandLine commandLine, char key, String defaultValue) {
+        if (commandLine.hasOption(key)) {
+            return commandLine.getOptionValue(key);
+        } else {
+            return defaultValue;
+        }
+    }
 }

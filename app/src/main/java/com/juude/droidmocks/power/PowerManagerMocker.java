@@ -1,29 +1,41 @@
 package com.juude.droidmocks.power;
 
+import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
+import android.text.TextUtils;
 import android.util.Log;
 
+import com.facebook.stetho.dumpapp.DumpException;
+import com.facebook.stetho.dumpapp.DumperContext;
+import com.facebook.stetho.dumpapp.DumperPlugin;
 import com.juude.droidmocks.mock.MockUtils;
 import com.juude.droidmocks.mock.Mocker;
+import com.juude.droidmocks.stetho.StethoHelper;
+
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
+
+import java.io.PrintWriter;
 
 /**
  * This requires android.permission.REBOOT
  * */
-public class PowerManagerMocker extends Mocker {
+public class PowerManagerMocker implements DumperPlugin {
     private static final String TAG = "PowerManagerMocker";
-    
-    private PowerManager mPm;
-    public PowerManagerMocker(Context context, Bundle extras) {
-        super(context, extras);
-        mPm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+    private final Application application;
+    private final PowerManager mPm;
+
+    public PowerManagerMocker(Application application) {
+        this.application = application;
+        mPm = (PowerManager) application.getSystemService(Context.POWER_SERVICE);
     }
     
     public void reboot() {
-        mContext.enforceCallingOrSelfPermission(android.Manifest.permission.REBOOT, "no reboot");
-        mPm.reboot(mExtras.getString("reason"));
+        application.enforceCallingOrSelfPermission(android.Manifest.permission.REBOOT, "no reboot");
     }
     
     public void wake() {
@@ -32,16 +44,34 @@ public class PowerManagerMocker extends Mocker {
         wakeLock.acquire(5000);
         wakeLock.release();
     }
-    
+
     @Override
-    public void dump() {
+    public String getName() {
+        return "power";
+    }
+
+    @Override
+    public void dump(DumperContext dumpContext) throws DumpException {
+        PrintWriter printWriter = StethoHelper.getPrintWriter(dumpContext);
         try {
-            PowerManagerMocker.class.getMethod(MockUtils.getString(mExtras, "method", "wake"))
-            .invoke(this);
+            CommandLine commandLine = StethoHelper.parse(dumpContext, getOptions());
+            String action = StethoHelper.getString(commandLine, 'a', "reboot");
+            if (TextUtils.equals(action, "reboot")) {
+                reboot();
+            } else {
+                wake();
+            }
+        } catch (ParseException e) {
+            printWriter.println(Log.getStackTraceString(e));
+        } finally {
+            printWriter.close();
         }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-   }
-    
+    }
+
+    private Options getOptions() {
+        return new Options()
+                .addOption("a", "action", true, "the action");
+    }
+
+
 }

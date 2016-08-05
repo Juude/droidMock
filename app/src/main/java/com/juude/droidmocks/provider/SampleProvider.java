@@ -13,7 +13,7 @@ public class SampleProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
-        Log.e(TAG, "ProviderTest onCreate");
+        Log.e(TAG, "ProviderMocker onCreate");
         return false;
     }
 

@@ -103,15 +103,7 @@
                 </action>
             </intent-filter>
         </receiver>
-        
-        <receiver android:name="com.juude.droidmocks.alarm.AlarmReceiver"
-            android:enabled="true" >
-            <intent-filter>
-                <action android:name="com.android.deskclock.ALARM_ALERT" >
-                </action>
-            </intent-filter>
-        </receiver>
-        
+
         <receiver android:name="com.juude.droidmocks.pm.PackageChangeReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_CHANGED" >

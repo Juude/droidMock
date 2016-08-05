@@ -79,15 +79,7 @@ public class Pm extends Mocker {
             Log.e(TAG, "", new Throwable());
         }
     }
-    
-    public void broadcast() {
-        Log.d(TAG, "broadcast");
-        if(MockUtils.getInt(mExtras, "register", 0) == 1) {
-            mContext.registerReceiver(new BroadcastReceiverTest(), new IntentFilter("HELLO"));
-        }
-        mContext.sendBroadcast(new Intent(mContext, BroadcastReceiverTest.class));
-    }
-    
+
     @Override
     public void dump() {
         String method = MockUtils.getString(mExtras, "method", "list");
