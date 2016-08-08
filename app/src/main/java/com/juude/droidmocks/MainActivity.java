@@ -20,10 +20,8 @@ import android.widget.SearchView.OnQueryTextListener;
 import com.juuda.droidmock.R;
 import com.juude.droidmocks.adb.SettingsMocker;
 import com.juude.droidmocks.app.AppFragment;
-import com.juude.droidmocks.data.DataFragment;
 import com.juude.droidmocks.display.DisplayPlugin;
 import com.juude.droidmocks.lock.LockFragment;
-import com.juude.droidmocks.sms.SmsSenderFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,11 +34,9 @@ public class MainActivity extends Activity {
     private static final Class<?>[] FRAGMENTS = {
             AppFragment.class,
             IndexFragment.class,
-            DataFragment.class,
             LockFragment.class,
             SettingsMocker.class,
             DisplayPlugin.class,
-            SmsSenderFragment.class,
     };
     private static final String TAG = "MainActivity";
 
@@ -74,15 +70,6 @@ public class MainActivity extends Activity {
         layout.setId(android.R.id.content);
         setContentView(layout);
         initActionBar();
-//        try {
-//            Thread.sleep(SystemProperties.getInt("onCreateT", DEFAULT));
-//        }
-//        catch (InterruptedException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
     }
 
 
