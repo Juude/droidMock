@@ -52,4 +52,20 @@ public class StethoHelper {
             return defaultValue;
         }
     }
+
+    public static String getString(CommandLine commandLine, String key, String defaultValue) {
+        if (commandLine.hasOption(key)) {
+            return commandLine.getOptionValue(key);
+        } else {
+            return defaultValue;
+        }
+    }
+
+    public static int getInteger(CommandLine commandLine, char key, final int defaultValue) {
+        int result = defaultValue;
+        if (commandLine.hasOption(key)) {
+            result =  Integer.parseInt(commandLine.getOptionValue(key));
+        }
+        return result;
+    }
 }

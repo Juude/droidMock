@@ -27,33 +27,6 @@ public class FilesPlugin implements DumperPlugin{
     public FilesPlugin(Application application) {
         this.application = application;
     }
-
-//    public void write() {
-//        String path = MockUtils.getString(mBundle, "path", Environment.getExternalStorageDirectory()
-//                .getPath() + File.separator + "0000.jpg");
-//
-//        File dest = new File(path);
-//        System.out.println("writing...to" + path);
-//
-//        if (dest.exists())
-//        {
-//            dest.delete();
-//        }
-//        try {
-//            FileOutputStream fop = new FileOutputStream(dest);
-//            fop.write(0);
-//            fop.close();
-//        }
-//        catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        catch (IOException ex)
-//        {
-//            ex.printStackTrace();
-//        }
-//    }
-
-
     @Override
     public String getName() {
         return "files";

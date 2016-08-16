@@ -18,10 +18,7 @@ import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
 
 import com.juuda.droidmock.R;
-import com.juude.droidmocks.adb.SettingsMocker;
-import com.juude.droidmocks.app.AppFragment;
 import com.juude.droidmocks.display.DisplayPlugin;
-import com.juude.droidmocks.lock.LockFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,10 +29,7 @@ public class MainActivity extends Activity {
     private HashMap<Class<?>, Fragment> mFragments = new HashMap<>();
 
     private static final Class<?>[] FRAGMENTS = {
-            AppFragment.class,
             IndexFragment.class,
-            LockFragment.class,
-            SettingsMocker.class,
             DisplayPlugin.class,
     };
     private static final String TAG = "MainActivity";

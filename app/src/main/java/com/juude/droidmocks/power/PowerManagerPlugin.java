@@ -24,12 +24,12 @@ import java.io.PrintWriter;
 /**
  * This requires android.permission.REBOOT
  * */
-public class PowerManagerMocker implements DumperPlugin {
-    private static final String TAG = "PowerManagerMocker";
+public class PowerManagerPlugin implements DumperPlugin {
+    private static final String TAG = "PowerManagerPlugin";
     private final Application application;
     private final PowerManager mPm;
 
-    public PowerManagerMocker(Application application) {
+    public PowerManagerPlugin(Application application) {
         this.application = application;
         mPm = (PowerManager) application.getSystemService(Context.POWER_SERVICE);
     }
