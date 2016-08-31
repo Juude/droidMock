@@ -8,6 +8,7 @@ import com.facebook.stetho.Stetho;
 import com.facebook.stetho.dumpapp.DumperPlugin;
 import com.facebook.stetho.inspector.protocol.ChromeDevtoolsDomain;
 import com.facebook.stetho.rhino.JsRuntimeReplFactoryBuilder;
+import com.juude.droidmocks.OkHttpPlugin;
 import com.juude.droidmocks.alarm.AlarmPlugin;
 import com.juude.droidmocks.display.DisplayPlugin;
 import com.juude.droidmocks.power.PowerManagerPlugin;
@@ -55,5 +56,6 @@ public class StethoWrapper {
         sDumperList.add(new PowerManagerPlugin(application));
         sDumperList.add(new SuPlugin());
         sDumperList.add(new ShortcutMocker(application));
+        sDumperList.add(new OkHttpPlugin());
     }
 }
