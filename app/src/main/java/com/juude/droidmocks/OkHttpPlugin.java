@@ -26,7 +26,10 @@ public class OkHttpPlugin extends SmartDumper {
     @Option
     public void openUrl() {
         String url = getOptionValue('u');
-        OkHttpClient okHttpClient = new OkHttpClient();
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .followRedirects(false)
+                .followSslRedirects(false)
+                .build();
         try {
             Response response = okHttpClient.newCall(new Request.Builder().url(url).build()).execute();
             dumpResponse(response);
