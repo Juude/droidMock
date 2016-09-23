@@ -8,13 +8,9 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.util.Log
-
-import com.facebook.stetho.dumpapp.DumpException
 import com.facebook.stetho.dumpapp.DumperContext
 import com.facebook.stetho.dumpapp.DumperPlugin
 import com.juude.droidmocks.stetho.StethoHelper
-
-import org.apache.commons.cli.CommandLine
 import org.apache.commons.cli.Options
 import org.apache.commons.cli.ParseException
 

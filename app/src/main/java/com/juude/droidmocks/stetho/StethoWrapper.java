@@ -12,7 +12,7 @@ import com.juude.droidmocks.OkHttpPlugin;
 import com.juude.droidmocks.alarm.AlarmPlugin;
 import com.juude.droidmocks.display.DisplayPlugin;
 import com.juude.droidmocks.power.PowerManagerPlugin;
-import com.juude.droidmocks.files.FilesPlugin;
+import com.juude.droidmocks.files.StoragePlugin;
 import com.juude.droidmocks.shortcut.ShortcutMocker;
 import com.juude.droidmocks.su.SuPlugin;
 
@@ -51,7 +51,7 @@ public class StethoWrapper {
 
     private static void addPlugins(Application application) {
         sDumperList.add(new AlarmPlugin(application));
-        sDumperList.add(new FilesPlugin(application));
+        sDumperList.add(new StoragePlugin(application));
         sDumperList.add(new DisplayPlugin(application));
         sDumperList.add(new PowerManagerPlugin(application));
         sDumperList.add(new SuPlugin());
