@@ -16,5 +16,4 @@ public class DroidMocksApplication extends Application{
         Mocks.sModuleMap.put("gps", GpsTest.class);
         Mocks.sModuleMap.put("context", ContextMocker.class);
     }
-
 }
