@@ -16,9 +16,6 @@ import android.util.Log;
 import com.facebook.stetho.dumpapp.DumpException;
 import com.facebook.stetho.dumpapp.DumperContext;
 import com.facebook.stetho.dumpapp.DumperPlugin;
-import com.juude.droidmocks.CommonActivity;
-import com.juude.droidmocks.mock.MockUtils;
-import com.juude.droidmocks.mock.Mocker;
 import com.juude.droidmocks.stetho.StethoHelper;
 
 import org.apache.commons.cli.CommandLine;
@@ -53,15 +50,6 @@ public class Am implements DumperPlugin {
         }
     }
 
-    public void anrFragment(CommandLine commandLine) {
-        Log.e(TAG, "anrFragment");
-        Intent i = new Intent(mContext, CommonActivity.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        i.putExtra(CommonActivity.KEY_FRAGMENT, "com.lewa.droidtest.am.AnrFragment");
-        mContext.startActivity(i);
-    }
-
-    
     public void resolve(CommandLine commandLine) {
         Intent intent = new Intent(Intent.ACTION_MAIN, null);
         String packageName = StethoHelper.getString(commandLine, 'p', null);

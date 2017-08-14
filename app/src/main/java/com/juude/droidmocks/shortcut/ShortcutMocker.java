@@ -6,6 +6,9 @@ import com.facebook.stetho.dumpapp.DumpException;
 import com.facebook.stetho.dumpapp.DumperContext;
 import com.facebook.stetho.dumpapp.DumperPlugin;
 import com.juuda.droidmock.R;
+/**
+ * this displays how to create a shortcut in Android.
+ * */
 
 public class ShortcutMocker implements DumperPlugin {
 

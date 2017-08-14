@@ -14,7 +14,7 @@ public class SuPlugin implements DumperPlugin{
 
     @Override
     public String getName() {
-        return "sud";
+        return "su";
     }
 
     @Override

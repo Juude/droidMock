@@ -25,6 +25,7 @@ import java.io.PrintWriter;
  * This requires android.permission.REBOOT
  * */
 public class PowerManagerPlugin implements DumperPlugin {
+
     private static final String TAG = "PowerManagerPlugin";
     private final Application application;
     private final PowerManager mPm;
